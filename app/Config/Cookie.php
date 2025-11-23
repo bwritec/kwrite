@@ -1,107 +1,119 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
-use DateTimeInterface;
+    use CodeIgniter\Config\BaseConfig;
+    use DateTimeInterface;
 
-class Cookie extends BaseConfig
-{
-    /**
-     * --------------------------------------------------------------------------
-     * Cookie Prefix
-     * --------------------------------------------------------------------------
-     *
-     * Set a cookie name prefix if you need to avoid collisions.
-     */
-    public string $prefix = '';
 
     /**
-     * --------------------------------------------------------------------------
-     * Cookie Expires Timestamp
-     * --------------------------------------------------------------------------
      *
-     * Default expires timestamp for cookies. Setting this to `0` will mean the
-     * cookie will not have the `Expires` attribute and will behave as a session
-     * cookie.
-     *
-     * @var DateTimeInterface|int|string
      */
-    public $expires = 0;
+    class Cookie extends BaseConfig
+    {
+        /**
+         * --------------------------------------------------------------------------
+         * Cookie Prefix
+         * --------------------------------------------------------------------------
+         *
+         * Defina um prefixo para o nome do cookie se precisar
+         * evitar conflitos.
+         */
+        public string $prefix = '';
 
-    /**
-     * --------------------------------------------------------------------------
-     * Cookie Path
-     * --------------------------------------------------------------------------
-     *
-     * Typically will be a forward slash.
-     */
-    public string $path = '/';
+        /**
+         * --------------------------------------------------------------------------
+         * Cookie Expires Timestamp
+         * --------------------------------------------------------------------------
+         *
+         * O valor padrão para o timestamp de expiração dos
+         * cookies é `0`. Definir esse valor como `0` significa
+         * que o cookie não terá o atributo `Expires` e se
+         * comportará como um cookie de sessão.
+         *
+         * @var DateTimeInterface|int|string
+         */
+        public $expires = 0;
 
-    /**
-     * --------------------------------------------------------------------------
-     * Cookie Domain
-     * --------------------------------------------------------------------------
-     *
-     * Set to `.your-domain.com` for site-wide cookies.
-     */
-    public string $domain = '';
+        /**
+         * --------------------------------------------------------------------------
+         * Cookie Path
+         * --------------------------------------------------------------------------
+         *
+         * Normalmente será uma barra invertida.
+         */
+        public string $path = '/';
 
-    /**
-     * --------------------------------------------------------------------------
-     * Cookie Secure
-     * --------------------------------------------------------------------------
-     *
-     * Cookie will only be set if a secure HTTPS connection exists.
-     */
-    public bool $secure = false;
+        /**
+         * --------------------------------------------------------------------------
+         * Cookie Domain
+         * --------------------------------------------------------------------------
+         *
+         * Definir como `.your-domain.com` para cookies em todo o site.
+         */
+        public string $domain = '';
 
-    /**
-     * --------------------------------------------------------------------------
-     * Cookie HTTPOnly
-     * --------------------------------------------------------------------------
-     *
-     * Cookie will only be accessible via HTTP(S) (no JavaScript).
-     */
-    public bool $httponly = true;
+        /**
+         * --------------------------------------------------------------------------
+         * Cookie Secure
+         * --------------------------------------------------------------------------
+         *
+         * O cookie só será definido se existir uma conexão HTTPS segura.
+         */
+        public bool $secure = false;
 
-    /**
-     * --------------------------------------------------------------------------
-     * Cookie SameSite
-     * --------------------------------------------------------------------------
-     *
-     * Configure cookie SameSite setting. Allowed values are:
-     * - None
-     * - Lax
-     * - Strict
-     * - ''
-     *
-     * Alternatively, you can use the constant names:
-     * - `Cookie::SAMESITE_NONE`
-     * - `Cookie::SAMESITE_LAX`
-     * - `Cookie::SAMESITE_STRICT`
-     *
-     * Defaults to `Lax` for compatibility with modern browsers. Setting `''`
-     * (empty string) means default SameSite attribute set by browsers (`Lax`)
-     * will be set on cookies. If set to `None`, `$secure` must also be set.
-     *
-     * @var ''|'Lax'|'None'|'Strict'
-     */
-    public string $samesite = 'Lax';
+        /**
+         * --------------------------------------------------------------------------
+         * Cookie HTTPOnly
+         * --------------------------------------------------------------------------
+         *
+         * O cookie só poderá ser acessado via HTTP(S) (sem JavaScript).
+         */
+        public bool $httponly = true;
 
-    /**
-     * --------------------------------------------------------------------------
-     * Cookie Raw
-     * --------------------------------------------------------------------------
-     *
-     * This flag allows setting a "raw" cookie, i.e., its name and value are
-     * not URL encoded using `rawurlencode()`.
-     *
-     * If this is set to `true`, cookie names should be compliant of RFC 2616's
-     * list of allowed characters.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#attributes
-     * @see https://tools.ietf.org/html/rfc2616#section-2.2
-     */
-    public bool $raw = false;
-}
+        /**
+         * --------------------------------------------------------------------------
+         * Cookie SameSite
+         * --------------------------------------------------------------------------
+         *
+         * Configure a definição SameSite do cookie. Os valores
+         * permitidos são:
+         * - None
+         * - Lax
+         * - Strict
+         * - ''
+         *
+         * Alternativamente, você pode usar os nomes das constantes:
+         * - `Cookie::SAMESITE_NONE`
+         * - `Cookie::SAMESITE_LAX`
+         * - `Cookie::SAMESITE_STRICT`
+         *
+         * O valor padrão é `Lax` para compatibilidade com
+         * navegadores modernos. Definir `''` (string vazia)
+         * significa que o atributo SameSite padrão definido
+         * pelos navegadores (`Lax`) será aplicado aos cookies.
+         * Se definido como `None`, `$secure` também deverá
+         * ser definido.
+         *
+         * @var ''|'Lax'|'None'|'Strict'
+         */
+        public string $samesite = 'Lax';
+
+        /**
+         * --------------------------------------------------------------------------
+         * Cookie Raw
+         * --------------------------------------------------------------------------
+         *
+         * Esta opção permite definir um cookie "bruto", ou seja,
+         * seu nome e valor não são codificados em URL usando
+         * `rawurlencode()`.
+         *
+         * Se esta opção estiver definida como `true`, os nomes
+         * dos cookies deverão estar em conformidade com a lista
+         * de caracteres permitidos da RFC 2616.
+         *
+         * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#attributes
+         * @see https://tools.ietf.org/html/rfc2616#section-2.2
+         */
+        public bool $raw = false;
+    }

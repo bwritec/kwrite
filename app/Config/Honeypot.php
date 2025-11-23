@@ -1,42 +1,46 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Config\BaseConfig;
 
-class Honeypot extends BaseConfig
-{
-    /**
-     * Makes Honeypot visible or not to human
-     */
-    public bool $hidden = true;
 
     /**
-     * Honeypot Label Content
-     */
-    public string $label = 'Fill This Field';
-
-    /**
-     * Honeypot Field Name
-     */
-    public string $name = 'honeypot';
-
-    /**
-     * Honeypot HTML Template
-     */
-    public string $template = '<label>{label}</label><input type="text" name="{name}" value="">';
-
-    /**
-     * Honeypot container
      *
-     * If you enabled CSP, you can remove `style="display:none"`.
      */
-    public string $container = '<div style="display:none">{template}</div>';
+    class Honeypot extends BaseConfig
+    {
+        /**
+         * Torna o Honeypot visível ou não para humanos.
+         */
+        public bool $hidden = true;
 
-    /**
-     * The id attribute for Honeypot container tag
-     *
-     * Used when CSP is enabled.
-     */
-    public string $containerId = 'hpc';
-}
+        /**
+         * Conteúdo do rótulo Honeypot
+         */
+        public string $label = 'Fill This Field';
+
+        /**
+         * Nome do campo Honeypot
+         */
+        public string $name = 'honeypot';
+
+        /**
+         * Modelo HTML do Honeypot
+         */
+        public string $template = '<label>{label}</label><input type="text" name="{name}" value="">';
+
+        /**
+         * Honeypot container
+         *
+         * Se você habilitou o CSP, pode removê-lo `style="display:none"`.
+         */
+        public string $container = '<div style="display:none">{template}</div>';
+
+        /**
+         * O atributo id para a tag do contêiner Honeypot
+         *
+         * Utilizado quando o CSP está ativado.
+         */
+        public string $containerId = 'hpc';
+    }

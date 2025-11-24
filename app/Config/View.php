@@ -1,62 +1,71 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\View as BaseView;
-use CodeIgniter\View\ViewDecoratorInterface;
+    use CodeIgniter\Config\View as BaseView;
+    use CodeIgniter\View\ViewDecoratorInterface;
 
-/**
- * @phpstan-type parser_callable (callable(mixed): mixed)
- * @phpstan-type parser_callable_string (callable(mixed): mixed)&string
- */
-class View extends BaseView
-{
-    /**
-     * When false, the view method will clear the data between each
-     * call. This keeps your data safe and ensures there is no accidental
-     * leaking between calls, so you would need to explicitly pass the data
-     * to each view. You might prefer to have the data stick around between
-     * calls so that it is available to all views. If that is the case,
-     * set $saveData to true.
-     *
-     * @var bool
-     */
-    public $saveData = true;
 
     /**
-     * Parser Filters map a filter name with any PHP callable. When the
-     * Parser prepares a variable for display, it will chain it
-     * through the filters in the order defined, inserting any parameters.
-     * To prevent potential abuse, all filters MUST be defined here
-     * in order for them to be available for use within the Parser.
-     *
-     * Examples:
-     *  { title|esc(js) }
-     *  { created_on|date(Y-m-d)|esc(attr) }
-     *
-     * @var         array<string, string>
-     * @phpstan-var array<string, parser_callable_string>
+     * @phpstan-type parser_callable (callable(mixed): mixed)
+     * @phpstan-type parser_callable_string (callable(mixed): mixed)&string
      */
-    public $filters = [];
+    class View extends BaseView
+    {
+        /**
+         * Quando definido como false, o método de visualização
+         * limpará os dados entre cada chamada. Isso mantém seus
+         * dados seguros e garante que não haja vazamento acidental
+         * entre as chamadas, portanto, você precisaria passar os
+         * dados explicitamente para cada visualização. Você pode
+         * preferir que os dados sejam mantidos entre as chamadas
+         * para que estejam disponíveis para todas as visualizações.
+         * Nesse caso, defina `$saveData` como true.
+         *
+         * @var bool
+         */
+        public $saveData = true;
 
-    /**
-     * Parser Plugins provide a way to extend the functionality provided
-     * by the core Parser by creating aliases that will be replaced with
-     * any callable. Can be single or tag pair.
-     *
-     * @var         array<string, callable|list<string>|string>
-     * @phpstan-var array<string, list<parser_callable_string>|parser_callable_string|parser_callable>
-     */
-    public $plugins = [];
+        /**
+         * Os filtros do analisador sintático mapeiam um nome
+         * de filtro para qualquer função PHP chamável. Quando
+         * o analisador sintático prepara uma variável para
+         * exibição, ele a encadeia através dos filtros na ordem
+         * definida, inserindo quaisquer parâmetros. Para evitar
+         * possíveis abusos, todos os filtros DEVEM ser definidos
+         * aqui para que estejam disponíveis para uso dentro do
+         * analisador sintático.
+         *
+         * Examples:
+         *  { title|esc(js) }
+         *  { created_on|date(Y-m-d)|esc(attr) }
+         *
+         * @var         array<string, string>
+         * @phpstan-var array<string, parser_callable_string>
+         */
+        public $filters = [];
 
-    /**
-     * View Decorators are class methods that will be run in sequence to
-     * have a chance to alter the generated output just prior to caching
-     * the results.
-     *
-     * All classes must implement CodeIgniter\View\ViewDecoratorInterface
-     *
-     * @var list<class-string<ViewDecoratorInterface>>
-     */
-    public array $decorators = [];
-}
+        /**
+         * Os plugins do analisador sintático permitem estender
+         * a funcionalidade fornecida pelo analisador sintático
+         * principal, criando aliases que serão substituídos por
+         * qualquer função chamável. Podem ser aliases únicos ou
+         * pares de tags.
+         *
+         * @var         array<string, callable|list<string>|string>
+         * @phpstan-var array<string, list<parser_callable_string>|parser_callable_string|parser_callable>
+         */
+        public $plugins = [];
+
+        /**
+         * Os View Decorators são métodos de classe que serão
+         * executados em sequência para ter a chance de alterar
+         * a saída gerada imediatamente antes do armazenamento
+         * em cache dos resultados.
+         *
+         * Todas as classes devem implementar CodeIgniter\View\ViewDecoratorInterface
+         *
+         * @var list<class-string<ViewDecoratorInterface>>
+         */
+        public array $decorators = [];
+    }

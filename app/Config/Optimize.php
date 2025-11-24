@@ -1,30 +1,33 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-/**
- * Optimization Configuration.
- *
- * NOTE: This class does not extend BaseConfig for performance reasons.
- *       So you cannot replace the property values with Environment Variables.
- */
-class Optimize
-{
-    /**
-     * --------------------------------------------------------------------------
-     * Config Caching
-     * --------------------------------------------------------------------------
-     *
-     * @see https://codeigniter.com/user_guide/concepts/factories.html#config-caching
-     */
-    public bool $configCacheEnabled = false;
 
     /**
-     * --------------------------------------------------------------------------
-     * Config Caching
-     * --------------------------------------------------------------------------
+     * Configuração de otimização.
      *
-     * @see https://codeigniter.com/user_guide/concepts/autoloader.html#file-locator-caching
+     * OBSERVAÇÃO: Esta classe não estende BaseConfig por
+     *             motivos de desempenho. Portanto, você não
+     *             pode substituir os valores das propriedades
+     *             por variáveis de ambiente.
      */
-    public bool $locatorCacheEnabled = false;
-}
+    class Optimize
+    {
+        /**
+         * --------------------------------------------------------------------------
+         * Config Caching
+         * --------------------------------------------------------------------------
+         *
+         * @see https://codeigniter.com/user_guide/concepts/factories.html#config-caching
+         */
+        public bool $configCacheEnabled = false;
+
+        /**
+         * --------------------------------------------------------------------------
+         * Config Caching
+         * --------------------------------------------------------------------------
+         *
+         * @see https://codeigniter.com/user_guide/concepts/autoloader.html#file-locator-caching
+         */
+        public bool $locatorCacheEnabled = false;
+    }

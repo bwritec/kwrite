@@ -1,140 +1,148 @@
 <?php
 
-/**
- * This file is part of CodeIgniter 4 framework.
- *
- * (c) CodeIgniter Foundation <admin@codeigniter.com>
- *
- * For the full copyright and license information, please view
- * the LICENSE file that was distributed with this source code.
- */
-
-namespace Config;
-
-use CodeIgniter\Config\Routing as BaseRouting;
-
-/**
- * Routing configuration
- */
-class Routing extends BaseRouting
-{
     /**
-     * For Defined Routes.
-     * An array of files that contain route definitions.
-     * Route files are read in order, with the first match
-     * found taking precedence.
+     * Este arquivo faz parte do framework CodeIgniter 4.
      *
-     * Default: APPPATH . 'Config/Routes.php'
+     * (c) CodeIgniter Foundation <admin@codeigniter.com>
      *
-     * @var list<string>
+     * For the full copyright and license information, please view
+     * the LICENSE file that was distributed with this source code.
      */
-    public array $routeFiles = [
-        APPPATH . 'Config/Routes.php',
-    ];
+
+    namespace Config;
+
+    use CodeIgniter\Config\Routing as BaseRouting;
+
 
     /**
-     * For Defined Routes and Auto Routing.
-     * The default namespace to use for Controllers when no other
-     * namespace has been specified.
-     *
-     * Default: 'App\Controllers'
+     * Configuração de roteamento
      */
-    public string $defaultNamespace = 'App\Controllers';
+    class Routing extends BaseRouting
+    {
+        /**
+         * Para rotas definidas.
+         * Uma matriz de arquivos que contém definições de rotas.
+         * Os arquivos de rotas são lidos em ordem, sendo que a
+         * primeira correspondência encontrada tem precedência.
+         *
+         * Default: APPPATH . 'Config/Routes.php'
+         *
+         * @var list<string>
+         */
+        public array $routeFiles = [
+            APPPATH . 'Config/Routes.php',
+        ];
 
-    /**
-     * For Auto Routing.
-     * The default controller to use when no other controller has been
-     * specified.
-     *
-     * Default: 'Home'
-     */
-    public string $defaultController = 'Home';
+        /**
+         * Para rotas definidas e roteamento automático.
+         * O namespace padrão a ser usado para controladores
+         * quando nenhum outro namespace for especificado.
+         *
+         * Default: 'App\Controllers'
+         */
+        public string $defaultNamespace = 'App\Controllers';
 
-    /**
-     * For Defined Routes and Auto Routing.
-     * The default method to call on the controller when no other
-     * method has been set in the route.
-     *
-     * Default: 'index'
-     */
-    public string $defaultMethod = 'index';
+        /**
+         * Para roteamento automático.
+         * O controlador padrão a ser usado quando nenhum outro
+         * controlador for especificado.
+         *
+         * Default: 'Home'
+         */
+        public string $defaultController = 'Home';
 
-    /**
-     * For Auto Routing.
-     * Whether to translate dashes in URIs for controller/method to underscores.
-     * Primarily useful when using the auto-routing.
-     *
-     * Default: false
-     */
-    public bool $translateURIDashes = false;
+        /**
+         * Para rotas definidas e roteamento automático.
+         * O método padrão a ser chamado no controlador quando
+         * nenhum outro método foi definido na rota.
+         *
+         * Default: 'index'
+         */
+        public string $defaultMethod = 'index';
 
-    /**
-     * Sets the class/method that should be called if routing doesn't
-     * find a match. It can be the controller/method name like: Users::index
-     *
-     * This setting is passed to the Router class and handled there.
-     *
-     * If you want to use a closure, you will have to set it in the
-     * routes file by calling:
-     *
-     * $routes->set404Override(function() {
-     *    // Do something here
-     * });
-     *
-     * Example:
-     *  public $override404 = 'App\Errors::show404';
-     */
-    public ?string $override404 = null;
+        /**
+         * Para roteamento automático.
+         * Indica se os hífens em URIs de controladores/métodos
+         * devem ser convertidos em sublinhados. Isso é especialmente
+         * útil ao usar o roteamento automático.
+         *
+         * Default: false
+         */
+        public bool $translateURIDashes = false;
 
-    /**
-     * If TRUE, the system will attempt to match the URI against
-     * Controllers by matching each segment against folders/files
-     * in APPPATH/Controllers, when a match wasn't found against
-     * defined routes.
-     *
-     * If FALSE, will stop searching and do NO automatic routing.
-     */
-    public bool $autoRoute = false;
+        /**
+         * Define a classe/método que deve ser chamado caso o
+         * roteamento não encontre uma correspondência. Pode ser
+         * o nome do controlador/método, como: Users::index
+         *
+         * Essa configuração é passada para a classe Router e tratada lá.
+         *
+         * Se você deseja usar um closure, precisará configurá-lo no
+         * arquivo de rotas chamando:
+         *
+         * $routes->set404Override(function() {
+         *    // Do something here
+         * });
+         *
+         * Exemplo:
+         *  public $override404 = 'App\Errors::show404';
+         */
+        public ?string $override404 = null;
 
-    /**
-     * For Defined Routes.
-     * If TRUE, will enable the use of the 'prioritize' option
-     * when defining routes.
-     *
-     * Default: false
-     */
-    public bool $prioritize = false;
+        /**
+         * Se definido como TRUE, o sistema tentará encontrar
+         * uma correspondência entre o URI e os Controladores,
+         * comparando cada segmento com pastas/arquivos em
+         * APPPATH/Controllers, caso não encontre uma
+         * correspondência com as rotas definidas.
+         *
+         * Se definido como FALSE, a busca será interrompida
+         * e o roteamento automático NÃO será realizado.
+         */
+        public bool $autoRoute = false;
 
-    /**
-     * For Defined Routes.
-     * If TRUE, matched multiple URI segments will be passed as one parameter.
-     *
-     * Default: false
-     */
-    public bool $multipleSegmentsOneParam = false;
+        /**
+         * Para rotas definidas.
+         * Se definido como TRUE, habilitará o uso da opção
+         * 'prioritize' ao definir rotas.
+         *
+         * Default: false
+         */
+        public bool $prioritize = false;
 
-    /**
-     * For Auto Routing (Improved).
-     * Map of URI segments and namespaces.
-     *
-     * The key is the first URI segment. The value is the controller namespace.
-     * E.g.,
-     *   [
-     *       'blog' => 'Acme\Blog\Controllers',
-     *   ]
-     *
-     * @var array<string, string>
-     */
-    public array $moduleRoutes = [];
+        /**
+         * Para rotas definidas.
+         * Se TRUE, Vários segmentos de URI correspondentes
+         * serão passados como um único parâmetro.
+         *
+         * Default: false
+         */
+        public bool $multipleSegmentsOneParam = false;
 
-    /**
-     * For Auto Routing (Improved).
-     * Whether to translate dashes in URIs for controller/method to CamelCase.
-     * E.g., blog-controller -> BlogController
-     *
-     * If you enable this, $translateURIDashes is ignored.
-     *
-     * Default: false
-     */
-    public bool $translateUriToCamelCase = true;
-}
+        /**
+         * Para roteamento automático (Melhorou).
+         * Mapa de segmentos URI e espaços de nomes.
+         *
+         * A chave é o primeiro segmento da URI. O valor é o
+         * namespace do controlador.
+         * Por exemplo,
+         *   [
+         *       'blog' => 'Acme\Blog\Controllers',
+         *   ]
+         *
+         * @var array<string, string>
+         */
+        public array $moduleRoutes = [];
+
+        /**
+         * Para roteamento automático (aprimorado).
+         * Indica se os hífens nas URIs de controlador/método devem
+         * ser convertidos para CamelCase.
+         * Por exemplo, blog-controller -> BlogController
+         *
+         * Se você ativar isso, $translateURIDashes é ignorado.
+         *
+         * Default: false
+         */
+        public bool $translateUriToCamelCase = true;
+    }

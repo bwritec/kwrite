@@ -1,121 +1,137 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Config\BaseConfig;
 
-class Email extends BaseConfig
-{
-    public string $fromEmail  = '';
-    public string $fromName   = '';
-    public string $recipients = '';
 
     /**
-     * The "user agent"
-     */
-    public string $userAgent = 'CodeIgniter';
-
-    /**
-     * The mail sending protocol: mail, sendmail, smtp
-     */
-    public string $protocol = 'mail';
-
-    /**
-     * The server path to Sendmail.
-     */
-    public string $mailPath = '/usr/sbin/sendmail';
-
-    /**
-     * SMTP Server Hostname
-     */
-    public string $SMTPHost = '';
-
-    /**
-     * SMTP Username
-     */
-    public string $SMTPUser = '';
-
-    /**
-     * SMTP Password
-     */
-    public string $SMTPPass = '';
-
-    /**
-     * SMTP Port
-     */
-    public int $SMTPPort = 25;
-
-    /**
-     * SMTP Timeout (in seconds)
-     */
-    public int $SMTPTimeout = 5;
-
-    /**
-     * Enable persistent SMTP connections
-     */
-    public bool $SMTPKeepAlive = false;
-
-    /**
-     * SMTP Encryption.
      *
-     * @var string '', 'tls' or 'ssl'. 'tls' will issue a STARTTLS command
-     *             to the server. 'ssl' means implicit SSL. Connection on port
-     *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    class Email extends BaseConfig
+    {
+        /**
+         *
+         */
+        public string $fromEmail  = '';
 
-    /**
-     * Enable word-wrap
-     */
-    public bool $wordWrap = true;
+        /**
+         *
+         */
+        public string $fromName   = '';
 
-    /**
-     * Character count to wrap at
-     */
-    public int $wrapChars = 76;
+        /**
+         *
+         */
+        public string $recipients = '';
 
-    /**
-     * Type of mail, either 'text' or 'html'
-     */
-    public string $mailType = 'text';
+        /**
+         * O "user agent"
+         */
+        public string $userAgent = 'CodeIgniter';
 
-    /**
-     * Character set (utf-8, iso-8859-1, etc.)
-     */
-    public string $charset = 'UTF-8';
+        /**
+         * O protocolo de envio de e-mail: mail, sendmail, smtp
+         */
+        public string $protocol = 'mail';
 
-    /**
-     * Whether to validate the email address
-     */
-    public bool $validate = false;
+        /**
+         * O caminho do servidor para Sendmail.
+         */
+        public string $mailPath = '/usr/sbin/sendmail';
 
-    /**
-     * Email Priority. 1 = highest. 5 = lowest. 3 = normal
-     */
-    public int $priority = 3;
+        /**
+         * Nome do host do servidor SMTP
+         */
+        public string $SMTPHost = '';
 
-    /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
-     */
-    public string $CRLF = "\r\n";
+        /**
+         * Nome de usuário SMTP
+         */
+        public string $SMTPUser = '';
 
-    /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
-     */
-    public string $newline = "\r\n";
+        /**
+         * Senha SMTP
+         */
+        public string $SMTPPass = '';
 
-    /**
-     * Enable BCC Batch Mode.
-     */
-    public bool $BCCBatchMode = false;
+        /**
+         * Porta SMTP
+         */
+        public int $SMTPPort = 25;
 
-    /**
-     * Number of emails in each BCC batch
-     */
-    public int $BCCBatchSize = 200;
+        /**
+         * Tempo limite SMTP (em segundos)
+         */
+        public int $SMTPTimeout = 5;
 
-    /**
-     * Enable notify message from server
-     */
-    public bool $DSN = false;
-}
+        /**
+         * Habilitar conexões SMTP persistentes
+         */
+        public bool $SMTPKeepAlive = false;
+
+        /**
+         * Criptografia SMTP.
+         *
+         * @var string '', 'tls' ou 'ssl'. 'tls' irá enviar um
+         *             comando STARTTLS para o servidor. 'ssl'
+         *             significa SSL implícito. A conexão na
+         *             porta 465 deve definir isso como ''.
+         */
+        public string $SMTPCrypto = 'tls';
+
+        /**
+         * Ativar quebra automática de linha
+         */
+        public bool $wordWrap = true;
+
+        /**
+         * Contagem de caracteres para quebra de linha
+         */
+        public int $wrapChars = 76;
+
+        /**
+         * Tipo de e-mail: 'texto' ou 'html'
+         */
+        public string $mailType = 'text';
+
+        /**
+         * Conjunto de caracteres (utf-8, iso-8859-1, etc.)
+         */
+        public string $charset = 'UTF-8';
+
+        /**
+         * Se deseja validar o endereço de e-mail
+         */
+        public bool $validate = false;
+
+        /**
+         * Prioridade de e-mail. 1 = highest. 5 = lowest. 3 = normal
+         */
+        public int $priority = 3;
+
+        /**
+         * Caractere de nova linha. (Use “\r\n” para cumprir com RFC 822)
+         */
+        public string $CRLF = "\r\n";
+
+        /**
+         * Caractere de nova linha. (Use “\r\n” para cumprir com RFC 822)
+         */
+        public string $newline = "\r\n";
+
+        /**
+         * Ativar o modo de lote BCC.
+         */
+        public bool $BCCBatchMode = false;
+
+        /**
+         * Número de emails em cada lote de BCC
+         */
+        public int $BCCBatchSize = 200;
+
+        /**
+         * Ativar notificação por mensagem do servidor
+         */
+        public bool $DSN = false;
+    }

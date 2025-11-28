@@ -1,20 +1,25 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Config\BaseConfig;
 
-class CURLRequest extends BaseConfig
-{
+
     /**
-     * --------------------------------------------------------------------------
-     * CURLRequest Share Options
-     * --------------------------------------------------------------------------
      *
-     * Whether share options between requests or not.
-     *
-     * If true, all the options won't be reset between requests.
-     * It may cause an error request with unnecessary headers.
      */
-    public bool $shareOptions = false;
-}
+    class CURLRequest extends BaseConfig
+    {
+        /**
+         * --------------------------------------------------------------------------
+         * Opções de compartilhamento do CURLRequest
+         * --------------------------------------------------------------------------
+         *
+         * Compartilhar opções entre solicitações ou não.
+         *
+         * Se isso for true, todas as opções não serão redefinidas
+         * entre as solicitações. Isso pode causar uma solicitação
+         * de erro com cabeçalhos desnecessários.
+         */
+        public bool $shareOptions = false;
+    }

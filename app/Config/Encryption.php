@@ -1,92 +1,105 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Config\BaseConfig;
 
-/**
- * Encryption configuration.
- *
- * These are the settings used for encryption, if you don't pass a parameter
- * array to the encrypter for creation/initialization.
- */
-class Encryption extends BaseConfig
-{
-    /**
-     * --------------------------------------------------------------------------
-     * Encryption Key Starter
-     * --------------------------------------------------------------------------
-     *
-     * If you use the Encryption class you must set an encryption key (seed).
-     * You need to ensure it is long enough for the cipher and mode you plan to use.
-     * See the user guide for more info.
-     */
-    public string $key = '';
 
     /**
-     * --------------------------------------------------------------------------
-     * Encryption Driver to Use
-     * --------------------------------------------------------------------------
+     * Configuração de criptografia.
      *
-     * One of the supported encryption drivers.
-     *
-     * Available drivers:
-     * - OpenSSL
-     * - Sodium
+     * Estas são as configurações usadas para criptografia,
+     * caso você não passe um array de parâmetros para o
+     * criptografador durante a criação/inicialização.
      */
-    public string $driver = 'OpenSSL';
+    class Encryption extends BaseConfig
+    {
+        /**
+         * --------------------------------------------------------------------------
+         * Chave inicial de criptografia
+         * --------------------------------------------------------------------------
+         *
+         * Se você usar a classe Encryption, deverá definir uma
+         * chave de criptografia (semente). Certifique-se de que
+         * ela seja longa o suficiente para a cifra e o modo que
+         * você pretende usar. Consulte o guia do usuário para
+         * obter mais informações.
+         */
+        public string $key = '';
 
-    /**
-     * --------------------------------------------------------------------------
-     * SodiumHandler's Padding Length in Bytes
-     * --------------------------------------------------------------------------
-     *
-     * This is the number of bytes that will be padded to the plaintext message
-     * before it is encrypted. This value should be greater than zero.
-     *
-     * See the user guide for more information on padding.
-     */
-    public int $blockSize = 16;
+        /**
+         * --------------------------------------------------------------------------
+         * Driver de criptografia a ser usado
+         * --------------------------------------------------------------------------
+         *
+         * Um dos drivers de criptografia suportados.
+         *
+         * Drivers disponíveis:
+         * - OpenSSL
+         * - Sodium
+         */
+        public string $driver = 'OpenSSL';
 
-    /**
-     * --------------------------------------------------------------------------
-     * Encryption digest
-     * --------------------------------------------------------------------------
-     *
-     * HMAC digest to use, e.g. 'SHA512' or 'SHA256'. Default value is 'SHA512'.
-     */
-    public string $digest = 'SHA512';
+        /**
+         * --------------------------------------------------------------------------
+         * Comprimento do preenchimento do SodiumHandler em bytes
+         * --------------------------------------------------------------------------
+         *
+         * Este é o número de bytes que serão adicionados ao
+         * texto simples antes de ser criptografado. Este valor
+         * deve ser maior que zero.
+         *
+         * Consulte o guia do usuário para obter mais informações
+         * sobre o espaçamento interno.
+         */
+        public int $blockSize = 16;
 
-    /**
-     * Whether the cipher-text should be raw. If set to false, then it will be base64 encoded.
-     * This setting is only used by OpenSSLHandler.
-     *
-     * Set to false for CI3 Encryption compatibility.
-     */
-    public bool $rawData = true;
+        /**
+         * --------------------------------------------------------------------------
+         * Encryption digest
+         * --------------------------------------------------------------------------
+         *
+         * Digest HMAC a ser usado, por exemplo, 'SHA512'
+         * ou 'SHA256'. O valor padrão é 'SHA512'.
+         */
+        public string $digest = 'SHA512';
 
-    /**
-     * Encryption key info.
-     * This setting is only used by OpenSSLHandler.
-     *
-     * Set to 'encryption' for CI3 Encryption compatibility.
-     */
-    public string $encryptKeyInfo = '';
+        /**
+         * Indica se o texto cifrado deve ser exibido em
+         * formato bruto. Se definido como false, será
+         * codificado em base64. Essa configuração é
+         * usada apenas pelo OpenSSLHandler.
+         *
+         * Defina como falso para compatibilidade com
+         * a criptografia CI3.
+         */
+        public bool $rawData = true;
 
-    /**
-     * Authentication key info.
-     * This setting is only used by OpenSSLHandler.
-     *
-     * Set to 'authentication' for CI3 Encryption compatibility.
-     */
-    public string $authKeyInfo = '';
+        /**
+         * Informações da chave de criptografia.
+         * Esta configuração só é utilizada por OpenSSLHandler.
+         *
+         * Defina como 'encryption' para compatibilidade
+         * com criptografia CI3.
+         */
+        public string $encryptKeyInfo = '';
 
-    /**
-     * Cipher to use.
-     * This setting is only used by OpenSSLHandler.
-     *
-     * Set to 'AES-128-CBC' to decrypt encrypted data that encrypted
-     * by CI3 Encryption default configuration.
-     */
-    public string $cipher = 'AES-256-CTR';
-}
+        /**
+         * Informações da chave de autenticação.
+         * Esta configuração só é utilizada por OpenSSLHandler.
+         *
+         * Defina como 'authentication' para compatibilidade
+         * com criptografia CI3.
+         */
+        public string $authKeyInfo = '';
+
+        /**
+         * Cifra a ser usada.
+         * Esta configuração só é utilizada por OpenSSLHandler.
+         *
+         * Defina como 'AES-128-CBC' para descriptografar dados
+         * criptografados pela configuração padrão de criptografia
+         * CI3.
+         */
+        public string $cipher = 'AES-256-CTR';
+    }

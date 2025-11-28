@@ -1,64 +1,70 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
-use CodeIgniter\Format\JSONFormatter;
-use CodeIgniter\Format\XMLFormatter;
+    use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Format\JSONFormatter;
+    use CodeIgniter\Format\XMLFormatter;
 
-class Format extends BaseConfig
-{
-    /**
-     * --------------------------------------------------------------------------
-     * Available Response Formats
-     * --------------------------------------------------------------------------
-     *
-     * When you perform content negotiation with the request, these are the
-     * available formats that your application supports. This is currently
-     * only used with the API\ResponseTrait. A valid Formatter must exist
-     * for the specified format.
-     *
-     * These formats are only checked when the data passed to the respond()
-     * method is an array.
-     *
-     * @var list<string>
-     */
-    public array $supportedResponseFormats = [
-        'application/json',
-        'application/xml', // machine-readable XML
-        'text/xml', // human-readable XML
-    ];
 
     /**
-     * --------------------------------------------------------------------------
-     * Formatters
-     * --------------------------------------------------------------------------
      *
-     * Lists the class to use to format responses with of a particular type.
-     * For each mime type, list the class that should be used. Formatters
-     * can be retrieved through the getFormatter() method.
-     *
-     * @var array<string, string>
      */
-    public array $formatters = [
-        'application/json' => JSONFormatter::class,
-        'application/xml'  => XMLFormatter::class,
-        'text/xml'         => XMLFormatter::class,
-    ];
+    class Format extends BaseConfig
+    {
+        /**
+         * --------------------------------------------------------------------------
+         * Formatos de resposta disponíveis
+         * --------------------------------------------------------------------------
+         *
+         * Ao realizar a negociação de conteúdo com a solicitação,
+         * estes são os formatos disponíveis que seu aplicativo
+         * suporta. Atualmente, isso só é usado com o API\ResponseTrait.
+         * Um Formatter válido deve existir para o formato especificado.
+         *
+         * Esses formatos só são verificados quando os dados passados
+         * para o método respond() são um array.
+         *
+         * @var list<string>
+         */
+        public array $supportedResponseFormats = [
+            'application/json',
+            'application/xml', // machine-readable XML
+            'text/xml', // human-readable XML
+        ];
 
-    /**
-     * --------------------------------------------------------------------------
-     * Formatters Options
-     * --------------------------------------------------------------------------
-     *
-     * Additional Options to adjust default formatters behaviour.
-     * For each mime type, list the additional options that should be used.
-     *
-     * @var array<string, int>
-     */
-    public array $formatterOptions = [
-        'application/json' => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES,
-        'application/xml'  => 0,
-        'text/xml'         => 0,
-    ];
-}
+        /**
+         * --------------------------------------------------------------------------
+         * Formatadores
+         * --------------------------------------------------------------------------
+         *
+         * Lista as classes a serem usadas para formatar respostas
+         * de um tipo específico. Para cada tipo MIME, lista a
+         * classe que deve ser usada. Os formatadores podem ser
+         * obtidos através do método `getFormatter()`.
+         *
+         * @var array<string, string>
+         */
+        public array $formatters = [
+            'application/json' => JSONFormatter::class,
+            'application/xml'  => XMLFormatter::class,
+            'text/xml'         => XMLFormatter::class,
+        ];
+
+        /**
+         * --------------------------------------------------------------------------
+         * Opções de Formatadores
+         * --------------------------------------------------------------------------
+         *
+         * Opções adicionais para ajustar o comportamento dos
+         * formatadores padrão. Para cada tipo MIME, liste as
+         * opções adicionais que devem ser usadas.
+         *
+         * @var array<string, int>
+         */
+        public array $formatterOptions = [
+            'application/json' => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES,
+            'application/xml'  => 0,
+            'text/xml'         => 0,
+        ];
+    }

@@ -1,63 +1,76 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use Kint\Parser\ConstructablePluginInterface;
-use Kint\Renderer\Rich\TabPluginInterface;
-use Kint\Renderer\Rich\ValuePluginInterface;
+    use Kint\Parser\ConstructablePluginInterface;
+    use Kint\Renderer\Rich\TabPluginInterface;
+    use Kint\Renderer\Rich\ValuePluginInterface;
 
-/**
- * --------------------------------------------------------------------------
- * Kint
- * --------------------------------------------------------------------------
- *
- * We use Kint's `RichRenderer` and `CLIRenderer`. This area contains options
- * that you can set to customize how Kint works for you.
- *
- * @see https://kint-php.github.io/kint/ for details on these settings.
- */
-class Kint
-{
-    /*
-    |--------------------------------------------------------------------------
-    | Global Settings
-    |--------------------------------------------------------------------------
-    */
 
     /**
-     * @var list<class-string<ConstructablePluginInterface>|ConstructablePluginInterface>|null
+     * --------------------------------------------------------------------------
+     * Kint
+     * --------------------------------------------------------------------------
+     *
+     * Usamos o `RichRenderer` e o `CLIRenderer` do Kint. Esta
+     * área contém opções que você pode configurar para personalizar
+     * o funcionamento do Kint.
+     *
+     * @see https://kint-php.github.io/kint/ Para obter detalhes sobre essas configurações.
      */
-    public $plugins;
+    class Kint
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | Global Settings
+        |--------------------------------------------------------------------------
+        */
 
-    public int $maxDepth           = 6;
-    public bool $displayCalledFrom = true;
-    public bool $expanded          = false;
+        /**
+         * @var list<class-string<ConstructablePluginInterface>|ConstructablePluginInterface>|null
+         */
+        public $plugins;
 
-    /*
-    |--------------------------------------------------------------------------
-    | RichRenderer Settings
-    |--------------------------------------------------------------------------
-    */
-    public string $richTheme = 'aante-light.css';
-    public bool $richFolder  = false;
+        /**
+         *
+         */
+        public int $maxDepth = 6;
 
-    /**
-     * @var array<string, class-string<ValuePluginInterface>>|null
-     */
-    public $richObjectPlugins;
+        /**
+         *
+         */
+        public bool $displayCalledFrom = true;
 
-    /**
-     * @var array<string, class-string<TabPluginInterface>>|null
-     */
-    public $richTabPlugins;
+        /**
+         *
+         */
+        public bool $expanded = false;
 
-    /*
-    |--------------------------------------------------------------------------
-    | CLI Settings
-    |--------------------------------------------------------------------------
-    */
-    public bool $cliColors      = true;
-    public bool $cliForceUTF8   = false;
-    public bool $cliDetectWidth = true;
-    public int $cliMinWidth     = 40;
-}
+        /**
+         * --------------------------------------------------------------------------
+         * RichRenderer Settings
+         * --------------------------------------------------------------------------
+         */
+        public string $richTheme = 'aante-light.css';
+        public bool $richFolder  = false;
+
+        /**
+         * @var array<string, class-string<ValuePluginInterface>>|null
+         */
+        public $richObjectPlugins;
+
+        /**
+         * @var array<string, class-string<TabPluginInterface>>|null
+         */
+        public $richTabPlugins;
+
+        /**
+         * --------------------------------------------------------------------------
+         * CLI Settings
+         * --------------------------------------------------------------------------
+         */
+        public bool $cliColors      = true;
+        public bool $cliForceUTF8   = false;
+        public bool $cliDetectWidth = true;
+        public int $cliMinWidth     = 40;
+    }

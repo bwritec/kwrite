@@ -1,32 +1,36 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseService;
+    use CodeIgniter\Config\BaseService;
 
-/**
- * Services Configuration file.
- *
- * Services are simply other classes/libraries that the system uses
- * to do its job. This is used by CodeIgniter to allow the core of the
- * framework to be swapped out easily without affecting the usage within
- * the rest of your application.
- *
- * This file holds any application-specific services, or service overrides
- * that you might need. An example has been included with the general
- * method format you should use for your service methods. For more examples,
- * see the core Services file at system/Config/Services.php.
- */
-class Services extends BaseService
-{
-    /*
-     * public static function example($getShared = true)
-     * {
-     *     if ($getShared) {
-     *         return static::getSharedInstance('example');
-     *     }
+
+    /**
+     * Arquivo de configuração de serviços.
      *
-     *     return new \CodeIgniter\Example();
-     * }
+     * Os serviços são simplesmente outras classes/bibliotecas
+     * que o sistema usa para realizar suas tarefas. O CodeIgniter
+     * utiliza isso para permitir que o núcleo do framework seja
+     * facilmente substituído sem afetar o uso no restante da
+     * aplicação.
+     *
+     * Este arquivo contém quaisquer serviços específicos da
+     * aplicação ou substituições de serviço que você possa
+     * precisar. Um exemplo foi incluído com o formato geral
+     * de método que você deve usar para seus métodos de
+     * serviço. Para mais exemplos, consulte o arquivo
+     * Services principal em system/Config/Services.php.
      */
-}
+    class Services extends BaseService
+    {
+        /*
+         * public static function example($getShared = true)
+         * {
+         *     if ($getShared) {
+         *         return static::getSharedInstance('example');
+         *     }
+         *
+         *     return new \CodeIgniter\Example();
+         * }
+         */
+    }

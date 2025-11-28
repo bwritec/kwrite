@@ -1,151 +1,190 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
-use CodeIgniter\Log\Handlers\FileHandler;
-use CodeIgniter\Log\Handlers\HandlerInterface;
+    use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Log\Handlers\FileHandler;
+    use CodeIgniter\Log\Handlers\HandlerInterface;
 
-class Logger extends BaseConfig
-{
-    /**
-     * --------------------------------------------------------------------------
-     * Error Logging Threshold
-     * --------------------------------------------------------------------------
-     *
-     * You can enable error logging by setting a threshold over zero. The
-     * threshold determines what gets logged. Any values below or equal to the
-     * threshold will be logged.
-     *
-     * Threshold options are:
-     *
-     * - 0 = Disables logging, Error logging TURNED OFF
-     * - 1 = Emergency Messages - System is unusable
-     * - 2 = Alert Messages - Action Must Be Taken Immediately
-     * - 3 = Critical Messages - Application component unavailable, unexpected exception.
-     * - 4 = Runtime Errors - Don't need immediate action, but should be monitored.
-     * - 5 = Warnings - Exceptional occurrences that are not errors.
-     * - 6 = Notices - Normal but significant events.
-     * - 7 = Info - Interesting events, like user logging in, etc.
-     * - 8 = Debug - Detailed debug information.
-     * - 9 = All Messages
-     *
-     * You can also pass an array with threshold levels to show individual error types
-     *
-     *     array(1, 2, 3, 8) = Emergency, Alert, Critical, and Debug messages
-     *
-     * For a live site you'll usually enable Critical or higher (3) to be logged otherwise
-     * your log files will fill up very fast.
-     *
-     * @var int|list<int>
-     */
-    public $threshold = (ENVIRONMENT === 'production') ? 4 : 9;
 
     /**
-     * --------------------------------------------------------------------------
-     * Date Format for Logs
-     * --------------------------------------------------------------------------
      *
-     * Each item that is logged has an associated date. You can use PHP date
-     * codes to set your own date formatting
      */
-    public string $dateFormat = 'Y-m-d H:i:s';
-
-    /**
-     * --------------------------------------------------------------------------
-     * Log Handlers
-     * --------------------------------------------------------------------------
-     *
-     * The logging system supports multiple actions to be taken when something
-     * is logged. This is done by allowing for multiple Handlers, special classes
-     * designed to write the log to their chosen destinations, whether that is
-     * a file on the getServer, a cloud-based service, or even taking actions such
-     * as emailing the dev team.
-     *
-     * Each handler is defined by the class name used for that handler, and it
-     * MUST implement the `CodeIgniter\Log\Handlers\HandlerInterface` interface.
-     *
-     * The value of each key is an array of configuration items that are sent
-     * to the constructor of each handler. The only required configuration item
-     * is the 'handles' element, which must be an array of integer log levels.
-     * This is most easily handled by using the constants defined in the
-     * `Psr\Log\LogLevel` class.
-     *
-     * Handlers are executed in the order defined in this array, starting with
-     * the handler on top and continuing down.
-     *
-     * @var array<class-string<HandlerInterface>, array<string, int|list<string>|string>>
-     */
-    public array $handlers = [
-        /*
-         * --------------------------------------------------------------------
-         * File Handler
-         * --------------------------------------------------------------------
+    class Logger extends BaseConfig
+    {
+        /**
+         * --------------------------------------------------------------------------
+         * Limite de registro de erros
+         * --------------------------------------------------------------------------
+         *
+         * Você pode ativar o registro de erros definindo um limite
+         * superior a zero. O limite determina o que será registrado.
+         * Quaisquer valores abaixo ou iguais ao limite serão
+         * registrados.
+         *
+         * As opções de limite são:
+         *
+         * - 0 = Desativa o registro de logs. Registro de erros DESATIVADO.
+         * - 1 = Mensagens de emergência - Sistema inutilizável
+         * - 2 = Mensagens de alerta - Ação imediata é imprescindível
+         * - 3 = Mensagens críticas - Componente da aplicação indisponível, exceção inesperada.
+         * - 4 = Erros de tempo de execução - Não exigem ação imediata, mas devem ser monitorados.
+         * - 5 = Avisos - Ocorrências excepcionais que não são erros.
+         * - 6 = Avisos - Eventos normais, porém significativos.
+         * - 7 = Informações - Eventos interessantes, como login de usuários, etc.
+         * - 8 = Depuração - Informações detalhadas de depuração.
+         * - 9 = Todas as mensagens
+         *
+         * Você também pode passar um array com níveis de limite
+         * para exibir tipos de erro individuais.
+         *
+         *     array(1, 2, 3, 8) = Emergency, Alert, Critical, e Debug messages
+         *
+         * Para um site em produção, você normalmente habilitará
+         * o nível Crítico ou superior (3) para registro, caso
+         * contrário, seus arquivos de log ficarão cheios muito
+         * rapidamente.
+         *
+         * @var int|list<int>
          */
-        FileHandler::class => [
-            // The log levels that this handler will handle.
-            'handles' => [
-                'critical',
-                'alert',
-                'emergency',
-                'debug',
-                'error',
-                'info',
-                'notice',
-                'warning',
+        public $threshold = (ENVIRONMENT === 'production') ? 4 : 9;
+
+        /**
+         * --------------------------------------------------------------------------
+         * Formato de data para registros
+         * --------------------------------------------------------------------------
+         *
+         * Cada item registrado possui uma data associada. Você
+         * pode usar códigos de data PHP para definir sua própria
+         * formatação de data.
+         */
+        public string $dateFormat = 'Y-m-d H:i:s';
+
+        /**
+         * --------------------------------------------------------------------------
+         * Manipuladores de log
+         * --------------------------------------------------------------------------
+         *
+         * O sistema de registro de logs permite a execução de
+         * múltiplas ações quando um evento é registrado. Isso
+         * é possível graças à possibilidade de utilizar múltiplos
+         * Handlers, classes especiais projetadas para gravar o log
+         * em seus destinos escolhidos, seja um arquivo no servidor,
+         * um serviço em nuvem ou até mesmo o envio de um e-mail para
+         * a equipe de desenvolvimento.
+         *
+         * Cada manipulador é definido pelo nome da classe usada
+         * para esse manipulador e DEVE implementar a interface
+         * `CodeIgniter\Log\Handlers\HandlerInterface`.
+         *
+         * O valor de cada chave é um array de itens de configuração
+         * que são enviados ao construtor de cada manipulador. O único
+         * item de configuração obrigatório é o elemento 'handles', que
+         * deve ser um array de níveis de log inteiros. Isso é tratado
+         * mais facilmente usando as constantes definidas na
+         * classe `Psr\Log\LogLevel`.
+         *
+         * Os manipuladores são executados na ordem definida nesta
+         * matriz, começando pelo manipulador no topo e continuando
+         * para baixo.
+         *
+         * @var array<class-string<HandlerInterface>, array<string, int|list<string>|string>>
+         */
+        public array $handlers = [
+            /**
+             * --------------------------------------------------------------------
+             * File Handler
+             * --------------------------------------------------------------------
+             */
+            FileHandler::class => [
+                /**
+                 * Os níveis de registro que este manipulador irá processar.
+                 */
+                'handles' => [
+                    'critical',
+                    'alert',
+                    'emergency',
+                    'debug',
+                    'error',
+                    'info',
+                    'notice',
+                    'warning',
+                ],
+
+                /**
+                 * A extensão de nome de arquivo padrão para arquivos
+                 * de log. A extensão 'php' permite proteger os arquivos
+                 * de log por meio de scripts básicos, quando eles forem
+                 * armazenados em um diretório de acesso público.
+                 *
+                 * OBSERVAÇÃO: Deixar em branco fará com que o valor
+                 *             padrão seja 'log'.
+                 */
+                'fileExtension' => '',
+
+                /**
+                 * As permissões do sistema de arquivos a serem aplicadas
+                 * aos arquivos de log recém-criados.
+                 *
+                 * IMPORTANTE: Este valor DEVE ser um número inteiro (sem
+                 *             aspas) e você DEVE usar a notação octal (ou
+                 *             seja, 0700, 0644, etc.).
+                 */
+                'filePermissions' => 0644,
+
+                /**
+                 * Caminho do diretório de registro
+                 *
+                 * Por padrão, os registros são gravados em WRITEPATH . 'logs/'.
+                 * Especifique um destino diferente aqui, se desejar.
+                 */
+                'path' => '',
             ],
 
-            /*
-             * The default filename extension for log files.
-             * An extension of 'php' allows for protecting the log files via basic
-             * scripting, when they are to be stored under a publicly accessible directory.
-             *
-             * NOTE: Leaving it blank will default to 'log'.
+            /**
+             * O ChromeLoggerHandler requer o uso do navegador
+             * Chrome e da extensão ChromeLogger. Remova o
+             * comentário deste bloco para utilizá-lo.
              */
-            'fileExtension' => '',
+            // 'CodeIgniter\Log\Handlers\ChromeLoggerHandler' => [
+            //     /**
+            //      * Os níveis de registro que este manipulador irá processar.
+            //      */
+            //     'handles' => [
+            //         'critical',
+            //         'alert',
+            //         'emergency',
+            //         'debug',
+            //         'error',
+            //         'info',
+            //         'notice',
+            //         'warning'
+            //     ],
+            // ],
 
-            /*
-             * The file system permissions to be applied on newly created log files.
-             *
-             * IMPORTANT: This MUST be an integer (no quotes) and you MUST use octal
-             * integer notation (i.e. 0700, 0644, etc.)
+            /**
+             * O ErrorlogHandler grava os logs na função nativa
+             * do PHP `error_log()`. Descomente este bloco para
+             * usá-lo.
              */
-            'filePermissions' => 0644,
-
-            /*
-             * Logging Directory Path
-             *
-             * By default, logs are written to WRITEPATH . 'logs/'
-             * Specify a different destination here, if desired.
-             */
-            'path' => '',
-        ],
-
-        /*
-         * The ChromeLoggerHandler requires the use of the Chrome web browser
-         * and the ChromeLogger extension. Uncomment this block to use it.
-         */
-        // 'CodeIgniter\Log\Handlers\ChromeLoggerHandler' => [
-        //     /*
-        //      * The log levels that this handler will handle.
-        //      */
-        //     'handles' => ['critical', 'alert', 'emergency', 'debug',
-        //                   'error', 'info', 'notice', 'warning'],
-        // ],
-
-        /*
-         * The ErrorlogHandler writes the logs to PHP's native `error_log()` function.
-         * Uncomment this block to use it.
-         */
-        // 'CodeIgniter\Log\Handlers\ErrorlogHandler' => [
-        //     /* The log levels this handler can handle. */
-        //     'handles' => ['critical', 'alert', 'emergency', 'debug', 'error', 'info', 'notice', 'warning'],
-        //
-        //     /*
-        //     * The message type where the error should go. Can be 0 or 4, or use the
-        //     * class constants: `ErrorlogHandler::TYPE_OS` (0) or `ErrorlogHandler::TYPE_SAPI` (4)
-        //     */
-        //     'messageType' => 0,
-        // ],
-    ];
-}
+            // 'CodeIgniter\Log\Handlers\ErrorlogHandler' => [
+            //     /* The log levels this handler can handle. */
+            //     'handles' => [
+            //         'critical',
+            //         'alert',
+            //         'emergency',
+            //         'debug',
+            //         'error',
+            //         'info',
+            //         'notice',
+            //         'warning'
+            //     ],
+            //
+            //     /**
+            //      * O tipo de mensagem para onde o erro deve ser direcionado. Pode ser 0 ou 4, ou use o
+            //      * class constants: `ErrorlogHandler::TYPE_OS` (0) ou `ErrorlogHandler::TYPE_SAPI` (4)
+            //      */
+            //     'messageType' => 0,
+            // ],
+        ];
+    }

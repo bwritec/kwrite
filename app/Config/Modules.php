@@ -1,82 +1,87 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Modules\Modules as BaseModules;
+    use CodeIgniter\Modules\Modules as BaseModules;
 
-/**
- * Modules Configuration.
- *
- * NOTE: This class is required prior to Autoloader instantiation,
- *       and does not extend BaseConfig.
- */
-class Modules extends BaseModules
-{
-    /**
-     * --------------------------------------------------------------------------
-     * Enable Auto-Discovery?
-     * --------------------------------------------------------------------------
-     *
-     * If true, then auto-discovery will happen across all elements listed in
-     * $aliases below. If false, no auto-discovery will happen at all,
-     * giving a slight performance boost.
-     *
-     * @var bool
-     */
-    public $enabled = true;
 
     /**
-     * --------------------------------------------------------------------------
-     * Enable Auto-Discovery Within Composer Packages?
-     * --------------------------------------------------------------------------
+     * Configuração de Módulos.
      *
-     * If true, then auto-discovery will happen across all namespaces loaded
-     * by Composer, as well as the namespaces configured locally.
-     *
-     * @var bool
+     * OBSERVAÇÃO: Essa classe é necessária antes da instanciação
+     *             do Autoloader e não estende BaseConfig.
      */
-    public $discoverInComposer = true;
+    class Modules extends BaseModules
+    {
+        /**
+         * --------------------------------------------------------------------------
+         * Enable Auto-Discovery?
+         * --------------------------------------------------------------------------
+         *
+         * Se true, Nesse caso, a descoberta automática ocorrerá
+         * em todos os elementos listados em `$aliases` abaixo. Se
+         * definido como false, nenhuma descoberta automática ocorrerá,
+         * proporcionando um pequeno aumento de desempenho.
+         *
+         * @var bool
+         */
+        public $enabled = true;
 
-    /**
-     * The Composer package list for Auto-Discovery
-     * This setting is optional.
-     *
-     * E.g.:
-     *   [
-     *       'only' => [
-     *           // List up all packages to auto-discover
-     *           'codeigniter4/shield',
-     *       ],
-     *   ]
-     *   or
-     *   [
-     *       'exclude' => [
-     *           // List up packages to exclude.
-     *           'pestphp/pest',
-     *       ],
-     *   ]
-     *
-     * @var array{only?: list<string>, exclude?: list<string>}
-     */
-    public $composerPackages = [];
+        /**
+         * --------------------------------------------------------------------------
+         * Enable Auto-Discovery Within Composer Packages?
+         * --------------------------------------------------------------------------
+         *
+         * Se true, então, a descoberta automática ocorrerá em
+         * todos os namespaces carregados pelo Composer, bem
+         * como nos namespaces configurados localmente.
+         *
+         * @var bool
+         */
+        public $discoverInComposer = true;
 
-    /**
-     * --------------------------------------------------------------------------
-     * Auto-Discovery Rules
-     * --------------------------------------------------------------------------
-     *
-     * Aliases list of all discovery classes that will be active and used during
-     * the current application request.
-     *
-     * If it is not listed, only the base application elements will be used.
-     *
-     * @var list<string>
-     */
-    public $aliases = [
-        'events',
-        'filters',
-        'registrars',
-        'routes',
-        'services',
-    ];
-}
+        /**
+         * Lista de pacotes do Composer para Auto-Discovery
+         * Essa configuração é opcional.
+         *
+         * Por exemplo:
+         *   [
+         *       'only' => [
+         *           // Liste todos os pacotes para descoberta automática.
+         *           'codeigniter4/shield',
+         *       ],
+         *   ]
+         *   ou
+         *   [
+         *       'exclude' => [
+         *           // Liste os pacotes a serem excluídos.
+         *           'pestphp/pest',
+         *       ],
+         *   ]
+         *
+         * @var array{only?: list<string>, exclude?: list<string>}
+         */
+        public $composerPackages = [];
+
+        /**
+         * --------------------------------------------------------------------------
+         * Auto-Discovery Rules
+         * --------------------------------------------------------------------------
+         *
+         * Lista de aliases de todas as classes de descoberta que
+         * estarão ativas e serão usadas durante a solicitação de
+         * aplicativo atual.
+         *
+         * Caso não esteja listado, serão utilizados apenas os
+         * elementos básicos da aplicação.
+         *
+         * @var list<string>
+         */
+        public $aliases = [
+            'events',
+            'filters',
+            'registrars',
+            'routes',
+            'services',
+        ];
+    }

@@ -1,86 +1,96 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Config\BaseConfig;
 
-class Security extends BaseConfig
-{
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Protection Method
-     * --------------------------------------------------------------------------
-     *
-     * Protection Method for Cross Site Request Forgery protection.
-     *
-     * @var string 'cookie' or 'session'
-     */
-    public string $csrfProtection = 'cookie';
 
     /**
-     * --------------------------------------------------------------------------
-     * CSRF Token Randomization
-     * --------------------------------------------------------------------------
      *
-     * Randomize the CSRF Token for added security.
      */
-    public bool $tokenRandomize = false;
+    class Security extends BaseConfig
+    {
+        /**
+         * --------------------------------------------------------------------------
+         * CSRF Protection Method
+         * --------------------------------------------------------------------------
+         *
+         * Método de proteção contra falsificação de solicitação
+         * entre sites (CSRF).
+         *
+         * @var string 'cookie' ou 'session'
+         */
+        public string $csrfProtection = 'cookie';
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Token Name
-     * --------------------------------------------------------------------------
-     *
-     * Token name for Cross Site Request Forgery protection.
-     */
-    public string $tokenName = 'csrf_test_name';
+        /**
+         * --------------------------------------------------------------------------
+         * CSRF Token Randomization
+         * --------------------------------------------------------------------------
+         *
+         * Para maior segurança, randomize o token CSRF.
+         */
+        public bool $tokenRandomize = false;
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Header Name
-     * --------------------------------------------------------------------------
-     *
-     * Header name for Cross Site Request Forgery protection.
-     */
-    public string $headerName = 'X-CSRF-TOKEN';
+        /**
+         * --------------------------------------------------------------------------
+         * CSRF Token Name
+         * --------------------------------------------------------------------------
+         *
+         * Nome do token para proteção contra Cross Site
+         * Request Forgery (CSRF).
+         */
+        public string $tokenName = 'csrf_test_name';
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Cookie Name
-     * --------------------------------------------------------------------------
-     *
-     * Cookie name for Cross Site Request Forgery protection.
-     */
-    public string $cookieName = 'csrf_cookie_name';
+        /**
+         * --------------------------------------------------------------------------
+         * CSRF Header Name
+         * --------------------------------------------------------------------------
+         *
+         * Nome do cabeçalho para proteção contra Cross
+         * Site Request Forgery (CSRF).
+         */
+        public string $headerName = 'X-CSRF-TOKEN';
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Expires
-     * --------------------------------------------------------------------------
-     *
-     * Expiration time for Cross Site Request Forgery protection cookie.
-     *
-     * Defaults to two hours (in seconds).
-     */
-    public int $expires = 7200;
+        /**
+         * --------------------------------------------------------------------------
+         * CSRF Cookie Name
+         * --------------------------------------------------------------------------
+         *
+         * Nome do cookie para proteção contra falsificação
+         * de solicitação entre sites (CSRF).
+         */
+        public string $cookieName = 'csrf_cookie_name';
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Regenerate
-     * --------------------------------------------------------------------------
-     *
-     * Regenerate CSRF Token on every submission.
-     */
-    public bool $regenerate = true;
+        /**
+         * --------------------------------------------------------------------------
+         * CSRF Expires
+         * --------------------------------------------------------------------------
+         *
+         * Tempo de expiração do cookie de proteção contra
+         * Cross-Site Request Forgery.
+         *
+         * O valor padrão é de duas horas (em segundos).
+         */
+        public int $expires = 7200;
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Redirect
-     * --------------------------------------------------------------------------
-     *
-     * Redirect to previous page with error on failure.
-     *
-     * @see https://codeigniter4.github.io/userguide/libraries/security.html#redirection-on-failure
-     */
-    public bool $redirect = (ENVIRONMENT === 'production');
-}
+        /**
+         * --------------------------------------------------------------------------
+         * CSRF Regenerate
+         * --------------------------------------------------------------------------
+         *
+         * Regenerar o token CSRF a cada submissão.
+         */
+        public bool $regenerate = true;
+
+        /**
+         * --------------------------------------------------------------------------
+         * CSRF Redirect
+         * --------------------------------------------------------------------------
+         *
+         * Redirecionar para a página anterior com mensagem
+         * de erro em caso de falha.
+         *
+         * @see https://codeigniter4.github.io/userguide/libraries/security.html#redirection-on-failure
+         */
+        public bool $redirect = (ENVIRONMENT === 'production');
+    }

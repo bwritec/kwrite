@@ -1,75 +1,80 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-/**
- * Paths
- *
- * Holds the paths that are used by the system to
- * locate the main directories, app, system, etc.
- *
- * Modifying these allows you to restructure your application,
- * share a system folder between multiple applications, and more.
- *
- * All paths are relative to the project's root folder.
- */
-class Paths
-{
-    /**
-     * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
-     * ---------------------------------------------------------------
-     *
-     * This must contain the name of your "system" folder. Include
-     * the path if the folder is not in the same directory as this file.
-     */
-    public string $systemDirectory = __DIR__ . '/../../vendor/codeigniter4/framework/system';
 
     /**
-     * ---------------------------------------------------------------
-     * APPLICATION FOLDER NAME
-     * ---------------------------------------------------------------
+     * Paths
      *
-     * If you want this front controller to use a different "app"
-     * folder than the default one you can set its name here. The folder
-     * can also be renamed or relocated anywhere on your server. If
-     * you do, use a full server path.
+     * Contém os caminhos usados pelo sistema para localizar
+     * os diretórios principais, como app, system, etc.
      *
-     * @see http://codeigniter.com/user_guide/general/managing_apps.html
+     * Modificar essas configurações permite reestruturar
+     * seu aplicativo, compartilhar uma pasta do sistema
+     * entre vários aplicativos e muito mais.
+     *
+     * Todos os caminhos são relativos à pasta raiz do projeto.
      */
-    public string $appDirectory = __DIR__ . '/..';
+    class Paths
+    {
+        /**
+         * ---------------------------------------------------------------
+         * SYSTEM FOLDER NAME
+         * ---------------------------------------------------------------
+         *
+         * Este arquivo deve conter o nome da sua pasta "system".
+         * Inclua o caminho completo se a pasta não estiver no
+         * mesmo diretório que este arquivo.
+         */
+        public string $systemDirectory = __DIR__ . '/../../vendor/codeigniter4/framework/system';
 
-    /**
-     * ---------------------------------------------------------------
-     * WRITABLE DIRECTORY NAME
-     * ---------------------------------------------------------------
-     *
-     * This variable must contain the name of your "writable" directory.
-     * The writable directory allows you to group all directories that
-     * need write permission to a single place that can be tucked away
-     * for maximum security, keeping it out of the app and/or
-     * system directories.
-     */
-    public string $writableDirectory = __DIR__ . '/../../writable';
+        /**
+         * ---------------------------------------------------------------
+         * APPLICATION FOLDER NAME
+         * ---------------------------------------------------------------
+         *
+         * Se você deseja que este controlador frontal utilize uma
+         * pasta "app" diferente da padrão, você pode definir o nome
+         * aqui. A pasta também pode ser renomeada ou realocada para
+         * qualquer lugar no seu servidor. Nesse caso, utilize o
+         * caminho completo do servidor.
+         *
+         * @see http://codeigniter.com/user_guide/general/managing_apps.html
+         */
+        public string $appDirectory = __DIR__ . '/..';
 
-    /**
-     * ---------------------------------------------------------------
-     * TESTS DIRECTORY NAME
-     * ---------------------------------------------------------------
-     *
-     * This variable must contain the name of your "tests" directory.
-     */
-    public string $testsDirectory = __DIR__ . '/../../tests';
+        /**
+         * ---------------------------------------------------------------
+         * WRITABLE DIRECTORY NAME
+         * ---------------------------------------------------------------
+         *
+         * Essa variável deve conter o nome do seu diretório "gravável".
+         * O diretório gravável permite agrupar todos os diretórios que
+         * precisam de permissão de escrita em um único local, que pode
+         * ser protegido para máxima segurança, mantendo-o fora dos
+         * diretórios do aplicativo e/ou do sistema.
+         */
+        public string $writableDirectory = __DIR__ . '/../../writable';
 
-    /**
-     * ---------------------------------------------------------------
-     * VIEW DIRECTORY NAME
-     * ---------------------------------------------------------------
-     *
-     * This variable must contain the name of the directory that
-     * contains the view files used by your application. By
-     * default this is in `app/Views`. This value
-     * is used when no value is provided to `Services::renderer()`.
-     */
-    public string $viewDirectory = __DIR__ . '/../Views';
-}
+        /**
+         * ---------------------------------------------------------------
+         * TESTS DIRECTORY NAME
+         * ---------------------------------------------------------------
+         *
+         * Essa variável deve conter o nome do seu diretório "tests".
+         */
+        public string $testsDirectory = __DIR__ . '/../../tests';
+
+        /**
+         * ---------------------------------------------------------------
+         * VIEW DIRECTORY NAME
+         * ---------------------------------------------------------------
+         *
+         * Esta variável deve conter o nome do diretório que
+         * contém os arquivos de visualização usados pelo seu
+         * aplicativo. Por padrão, ele está em `app/Views`. Este
+         * valor é usado quando nenhum valor é fornecido
+         * para `Services::renderer()`.
+         */
+        public string $viewDirectory = __DIR__ . '/../Views';
+    }

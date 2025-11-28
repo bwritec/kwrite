@@ -1,105 +1,117 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Config\BaseConfig;
 
-/**
- * Cross-Origin Resource Sharing (CORS) Configuration
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
- */
-class Cors extends BaseConfig
-{
+
     /**
-     * The default CORS configuration.
+     * Configuração de Compartilhamento de Recursos de
+     * Origem Cruzada (CORS)
      *
-     * @var array{
-     *      allowedOrigins: list<string>,
-     *      allowedOriginsPatterns: list<string>,
-     *      supportsCredentials: bool,
-     *      allowedHeaders: list<string>,
-     *      exposedHeaders: list<string>,
-     *      allowedMethods: list<string>,
-     *      maxAge: int,
-     *  }
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
      */
-    public array $default = [
+    class Cors extends BaseConfig
+    {
         /**
-         * Origins for the `Access-Control-Allow-Origin` header.
+         * A configuração CORS padrão.
          *
-         * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
-         *
-         * E.g.:
-         *   - ['http://localhost:8080']
-         *   - ['https://www.example.com']
+         * @var array{
+         *      allowedOrigins: list<string>,
+         *      allowedOriginsPatterns: list<string>,
+         *      supportsCredentials: bool,
+         *      allowedHeaders: list<string>,
+         *      exposedHeaders: list<string>,
+         *      allowedMethods: list<string>,
+         *      maxAge: int,
+         *  }
          */
-        'allowedOrigins' => [],
+        public array $default = [
+            /**
+             * Origens do cabeçalho `Access-Control-Allow-Origin`.
+             *
+             * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
+             *
+             * Por exemplo.:
+             *   - ['http://localhost:8080']
+             *   - ['https://www.example.com']
+             */
+            'allowedOrigins' => [],
 
-        /**
-         * Origin regex patterns for the `Access-Control-Allow-Origin` header.
-         *
-         * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
-         *
-         * NOTE: A pattern specified here is part of a regular expression. It will
-         *       be actually `#\A<pattern>\z#`.
-         *
-         * E.g.:
-         *   - ['https://\w+\.example\.com']
-         */
-        'allowedOriginsPatterns' => [],
+            /**
+             * Padrões de expressão regular de origem para o
+             * cabeçalho `Access-Control-Allow-Origin`.
+             *
+             * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
+             *
+             * OBSERVAÇÃO: Um padrão especificado aqui faz parte de uma expressão
+             *       regular. Na verdade, será `#\A<pattern>\z#`.
+             *
+             * Por exemplo.:
+             *   - ['https://\w+\.example\.com']
+             */
+            'allowedOriginsPatterns' => [],
 
-        /**
-         * Weather to send the `Access-Control-Allow-Credentials` header.
-         *
-         * The Access-Control-Allow-Credentials response header tells browsers whether
-         * the server allows cross-origin HTTP requests to include credentials.
-         *
-         * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
-         */
-        'supportsCredentials' => false,
+            /**
+             * Condições meteorológicas para enviar o cabeçalho
+             * `Access-Control-Allow-Credentials`.
+             *
+             * O cabeçalho de resposta Access-Control-Allow-Credentials
+             * informa aos navegadores se o servidor permite que solicitações
+             * HTTP de origem cruzada incluam credenciais.
+             *
+             * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
+             */
+            'supportsCredentials' => false,
 
-        /**
-         * Set headers to allow.
-         *
-         * The Access-Control-Allow-Headers response header is used in response to
-         * a preflight request which includes the Access-Control-Request-Headers to
-         * indicate which HTTP headers can be used during the actual request.
-         *
-         * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers
-         */
-        'allowedHeaders' => [],
+            /**
+             * Defina os cabeçalhos para permitir.
+             *
+             * O cabeçalho de resposta Access-Control-Allow-Headers é
+             * usado em resposta a uma solicitação de pré-voo que inclui
+             * o Access-Control-Request-Headers para indicar quais
+             * cabeçalhos HTTP podem ser usados durante a solicitação
+             * propriamente dita.
+             *
+             * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers
+             */
+            'allowedHeaders' => [],
 
-        /**
-         * Set headers to expose.
-         *
-         * The Access-Control-Expose-Headers response header allows a server to
-         * indicate which response headers should be made available to scripts running
-         * in the browser, in response to a cross-origin request.
-         *
-         * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Expose-Headers
-         */
-        'exposedHeaders' => [],
+            /**
+             * Defina os cabeçalhos a serem expostos.
+             *
+             * O cabeçalho de resposta Access-Control-Expose-Headers
+             * permite que um servidor indique quais cabeçalhos de
+             * resposta devem ser disponibilizados para scripts em
+             * execução no navegador, em resposta a uma solicitação
+             * de origem cruzada.
+             *
+             * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Expose-Headers
+             */
+            'exposedHeaders' => [],
 
-        /**
-         * Set methods to allow.
-         *
-         * The Access-Control-Allow-Methods response header specifies one or more
-         * methods allowed when accessing a resource in response to a preflight
-         * request.
-         *
-         * E.g.:
-         *   - ['GET', 'POST', 'PUT', 'DELETE']
-         *
-         * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods
-         */
-        'allowedMethods' => [],
+            /**
+             * Defina os métodos permitidos.
+             *
+             * O cabeçalho de resposta Access-Control-Allow-Methods
+             * especifica um ou mais métodos permitidos ao acessar
+             * um recurso em resposta a uma solicitação de
+             * verificação prévia.
+             *
+             * Por exemplo.:
+             *   - ['GET', 'POST', 'PUT', 'DELETE']
+             *
+             * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods
+             */
+            'allowedMethods' => [],
 
-        /**
-         * Set how many seconds the results of a preflight request can be cached.
-         *
-         * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age
-         */
-        'maxAge' => 7200,
-    ];
-}
+            /**
+             * Defina por quantos segundos os resultados de uma
+             * solicitação de pré-voo podem ser armazenados em
+             * cache.
+             *
+             * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age
+             */
+            'maxAge' => 7200,
+        ];
+    }

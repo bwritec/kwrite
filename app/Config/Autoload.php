@@ -1,92 +1,98 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\AutoloadConfig;
+    use CodeIgniter\Config\AutoloadConfig;
 
-/**
- * -------------------------------------------------------------------
- * AUTOLOADER CONFIGURATION
- * -------------------------------------------------------------------
- *
- * This file defines the namespaces and class maps so the Autoloader
- * can find the files as needed.
- *
- * NOTE: If you use an identical key in $psr4 or $classmap, then
- *       the values in this file will overwrite the framework's values.
- *
- * NOTE: This class is required prior to Autoloader instantiation,
- *       and does not extend BaseConfig.
- */
-class Autoload extends AutoloadConfig
-{
-    /**
-     * -------------------------------------------------------------------
-     * Namespaces
-     * -------------------------------------------------------------------
-     * This maps the locations of any namespaces in your application to
-     * their location on the file system. These are used by the autoloader
-     * to locate files the first time they have been instantiated.
-     *
-     * The 'Config' (APPPATH . 'Config') and 'CodeIgniter' (SYSTEMPATH) are
-     * already mapped for you.
-     *
-     * You may change the name of the 'App' namespace if you wish,
-     * but this should be done prior to creating any namespaced classes,
-     * else you will need to modify all of those classes for this to work.
-     *
-     * @var array<string, list<string>|string>
-     */
-    public $psr4 = [
-        APP_NAMESPACE => APPPATH,
-    ];
 
     /**
      * -------------------------------------------------------------------
-     * Class Map
+     * AUTOLOADER CONFIGURATION
      * -------------------------------------------------------------------
-     * The class map provides a map of class names and their exact
-     * location on the drive. Classes loaded in this manner will have
-     * slightly faster performance because they will not have to be
-     * searched for within one or more directories as they would if they
-     * were being autoloaded through a namespace.
      *
-     * Prototype:
-     *   $classmap = [
-     *       'MyClass'   => '/path/to/class/file.php'
-     *   ];
+     * Este arquivo define os namespaces e os mapeamentos de classe
+     * para que o Autoloader possa encontrar os arquivos conforme
+     * necessário.
      *
-     * @var array<string, string>
+     * OBSERVAÇÃO: Se você usar uma chave idêntica em $psr4 ou
+     *             $classmap, os valores neste arquivo substituirão
+     *             os valores do framework.
+     *
+     * OBSERVAÇÃO: Essa classe é necessária antes da instanciação
+     *             do Autoloader e não estende BaseConfig.
      */
-    public $classmap = [];
+    class Autoload extends AutoloadConfig
+    {
+        /**
+         * -------------------------------------------------------------------
+         * Namespaces
+         * -------------------------------------------------------------------
+         * Isso mapeia a localização de quaisquer namespaces em seu
+         * aplicativo para sua localização no sistema de arquivos. Esses
+         * namespaces são usados pelo carregador automático para localizar
+         * arquivos na primeira vez em que são instanciados.
+         *
+         * O 'Config' (APPPATH . 'Config') e 'CodeIgniter' (SYSTEMPATH)
+         * já está mapeado para você.
+         *
+         * Você pode alterar o nome do namespace 'App' se desejar,
+         * mas isso deve ser feito antes de criar quaisquer classes
+         * com namespace; caso contrário, você precisará modificar
+         * todas essas classes para que isso funcione.
+         *
+         * @var array<string, list<string>|string>
+         */
+        public $psr4 = [
+            APP_NAMESPACE => APPPATH,
+        ];
 
-    /**
-     * -------------------------------------------------------------------
-     * Files
-     * -------------------------------------------------------------------
-     * The files array provides a list of paths to __non-class__ files
-     * that will be autoloaded. This can be useful for bootstrap operations
-     * or for loading functions.
-     *
-     * Prototype:
-     *   $files = [
-     *       '/path/to/my/file.php',
-     *   ];
-     *
-     * @var list<string>
-     */
-    public $files = [];
+        /**
+         * -------------------------------------------------------------------
+         * Class Map
+         * -------------------------------------------------------------------
+         * O mapa de classes fornece um mapeamento dos nomes das classes
+         * e sua localização exata na unidade. As classes carregadas dessa
+         * maneira terão um desempenho ligeiramente mais rápido, pois não
+         * precisarão ser buscadas em um ou mais diretórios, como aconteceria
+         * se fossem carregadas automaticamente por meio de um namespace.
+         *
+         * Prototype:
+         *   $classmap = [
+         *       'MyClass'   => '/path/to/class/file.php'
+         *   ];
+         *
+         * @var array<string, string>
+         */
+        public $classmap = [];
 
-    /**
-     * -------------------------------------------------------------------
-     * Helpers
-     * -------------------------------------------------------------------
-     * Prototype:
-     *   $helpers = [
-     *       'form',
-     *   ];
-     *
-     * @var list<string>
-     */
-    public $helpers = [];
-}
+        /**
+         * -------------------------------------------------------------------
+         * Files
+         * -------------------------------------------------------------------
+         * O array `files` fornece uma lista de caminhos para arquivos
+         * __non-class__ que serão carregados automaticamente. Isso pode
+         * ser útil para operações de inicialização ou para carregar
+         * funções.
+         *
+         * Prototype:
+         *   $files = [
+         *       '/path/to/my/file.php',
+         *   ];
+         *
+         * @var list<string>
+         */
+        public $files = [];
+
+        /**
+         * -------------------------------------------------------------------
+         * Helpers
+         * -------------------------------------------------------------------
+         * Prototype:
+         *   $helpers = [
+         *       'form',
+         *   ];
+         *
+         * @var list<string>
+         */
+        public $helpers = [];
+    }

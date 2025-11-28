@@ -1,176 +1,191 @@
 <?php
 
-namespace Config;
+    namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
+    use CodeIgniter\Config\BaseConfig;
 
-/**
- * Stores the default settings for the ContentSecurityPolicy, if you
- * choose to use it. The values here will be read in and set as defaults
- * for the site. If needed, they can be overridden on a page-by-page basis.
- *
- * Suggested reference for explanations:
- *
- * @see https://www.html5rocks.com/en/tutorials/security/content-security-policy/
- */
-class ContentSecurityPolicy extends BaseConfig
-{
-    // -------------------------------------------------------------------------
-    // Broadbrush CSP management
-    // -------------------------------------------------------------------------
 
     /**
-     * Default CSP report context
-     */
-    public bool $reportOnly = false;
-
-    /**
-     * Specifies a URL where a browser will send reports
-     * when a content security policy is violated.
-     */
-    public ?string $reportURI = null;
-
-    /**
-     * Instructs user agents to rewrite URL schemes, changing
-     * HTTP to HTTPS. This directive is for websites with
-     * large numbers of old URLs that need to be rewritten.
-     */
-    public bool $upgradeInsecureRequests = false;
-
-    // -------------------------------------------------------------------------
-    // Sources allowed
-    // NOTE: once you set a policy to 'none', it cannot be further restricted
-    // -------------------------------------------------------------------------
-
-    /**
-     * Will default to self if not overridden
+     * Armazena as configurações padrão da ContentSecurityPolicy,
+     * caso você opte por utilizá-la. Os valores aqui inseridos
+     * serão lidos e definidos como padrão para o site. Se
+     * necessário, eles podem ser alterados página por página.
      *
-     * @var list<string>|string|null
-     */
-    public $defaultSrc;
-
-    /**
-     * Lists allowed scripts' URLs.
+     * Referência sugerida para explicações:
      *
-     * @var list<string>|string
+     * @see https://www.html5rocks.com/en/tutorials/security/content-security-policy/
      */
-    public $scriptSrc = 'self';
+    class ContentSecurityPolicy extends BaseConfig
+    {
+        /**
+         * -------------------------------------------------------------------------
+         * Gestão Broadbrush CSP
+         * -------------------------------------------------------------------------
+         */
 
-    /**
-     * Lists allowed stylesheets' URLs.
-     *
-     * @var list<string>|string
-     */
-    public $styleSrc = 'self';
+        /**
+         * Contexto padrão do relatório CSP
+         */
+        public bool $reportOnly = false;
 
-    /**
-     * Defines the origins from which images can be loaded.
-     *
-     * @var list<string>|string
-     */
-    public $imageSrc = 'self';
+        /**
+         * Especifica um URL para onde o navegador enviará relatórios
+         * quando uma política de segurança de conteúdo for violada.
+         */
+        public ?string $reportURI = null;
 
-    /**
-     * Restricts the URLs that can appear in a page's `<base>` element.
-     *
-     * Will default to self if not overridden
-     *
-     * @var list<string>|string|null
-     */
-    public $baseURI;
+        /**
+         * Instrui os agentes de usuário a reescreverem os
+         * esquemas de URL, alterando HTTP para HTTPS. Esta
+         * diretiva destina-se a sites com um grande número
+         * de URLs antigas que precisam ser reescritas.
+         */
+        public bool $upgradeInsecureRequests = false;
 
-    /**
-     * Lists the URLs for workers and embedded frame contents
-     *
-     * @var list<string>|string
-     */
-    public $childSrc = 'self';
+        /**
+         * -------------------------------------------------------------------------
+         * Fontes permitidas
+         *
+         * OBSERVAÇÃO: Depois de definir uma política como 'none',
+         *             ela não poderá ser restringida posteriormente.
+         * -------------------------------------------------------------------------
+         */
 
-    /**
-     * Limits the origins that you can connect to (via XHR,
-     * WebSockets, and EventSource).
-     *
-     * @var list<string>|string
-     */
-    public $connectSrc = 'self';
+        /**
+         * Se não for alterado, usará o padrão "self".
+         *
+         * @var list<string>|string|null
+         */
+        public $defaultSrc;
 
-    /**
-     * Specifies the origins that can serve web fonts.
-     *
-     * @var list<string>|string
-     */
-    public $fontSrc;
+        /**
+         * Lista os URLs dos scripts permitidos.
+         *
+         * @var list<string>|string
+         */
+        public $scriptSrc = 'self';
 
-    /**
-     * Lists valid endpoints for submission from `<form>` tags.
-     *
-     * @var list<string>|string
-     */
-    public $formAction = 'self';
+        /**
+         * Listas de URLs de folhas de estilo permitidas.
+         *
+         * @var list<string>|string
+         */
+        public $styleSrc = 'self';
 
-    /**
-     * Specifies the sources that can embed the current page.
-     * This directive applies to `<frame>`, `<iframe>`, `<embed>`,
-     * and `<applet>` tags. This directive can't be used in
-     * `<meta>` tags and applies only to non-HTML resources.
-     *
-     * @var list<string>|string|null
-     */
-    public $frameAncestors;
+        /**
+         * Define as origens a partir das quais as imagens
+         * podem ser carregadas.
+         *
+         * @var list<string>|string
+         */
+        public $imageSrc = 'self';
 
-    /**
-     * The frame-src directive restricts the URLs which may
-     * be loaded into nested browsing contexts.
-     *
-     * @var list<string>|string|null
-     */
-    public $frameSrc;
+        /**
+         * Restringe os URLs que podem aparecer no elemento `<base>`
+         * de uma página.
+         *
+         * Se não for alterado, usará o padrão "self".
+         *
+         * @var list<string>|string|null
+         */
+        public $baseURI;
 
-    /**
-     * Restricts the origins allowed to deliver video and audio.
-     *
-     * @var list<string>|string|null
-     */
-    public $mediaSrc;
+        /**
+         * Lista os URLs dos trabalhadores e do conteúdo dos
+         * frames incorporados.
+         *
+         * @var list<string>|string
+         */
+        public $childSrc = 'self';
 
-    /**
-     * Allows control over Flash and other plugins.
-     *
-     * @var list<string>|string
-     */
-    public $objectSrc = 'self';
+        /**
+         * Limita as origens às quais você pode se conectar (via
+         * XHR, WebSockets e EventSource).
+         *
+         * @var list<string>|string
+         */
+        public $connectSrc = 'self';
 
-    /**
-     * @var list<string>|string|null
-     */
-    public $manifestSrc;
+        /**
+         * Especifica as origens que podem fornecer fontes da web.
+         *
+         * @var list<string>|string
+         */
+        public $fontSrc;
 
-    /**
-     * Limits the kinds of plugins a page may invoke.
-     *
-     * @var list<string>|string|null
-     */
-    public $pluginTypes;
+        /**
+         * Lista os endpoints válidos para envio a partir
+         * das tags `<form>`.
+         *
+         * @var list<string>|string
+         */
+        public $formAction = 'self';
 
-    /**
-     * List of actions allowed.
-     *
-     * @var list<string>|string|null
-     */
-    public $sandbox;
+        /**
+         * Especifica as fontes que podem incorporar a página
+         * atual. Esta diretiva aplica-se às tags `<frame>`,
+         * `<iframe>`, `<embed>` e `<applet>`. Esta diretiva
+         * não pode ser usada em tags `<meta>` e aplica-se
+         * apenas a recursos que não sejam HTML.
+         *
+         * @var list<string>|string|null
+         */
+        public $frameAncestors;
 
-    /**
-     * Nonce tag for style
-     */
-    public string $styleNonceTag = '{csp-style-nonce}';
+        /**
+         * A diretiva frame-src restringe os URLs que podem
+         * ser carregados em contextos de navegação aninhados.
+         *
+         * @var list<string>|string|null
+         */
+        public $frameSrc;
 
-    /**
-     * Nonce tag for script
-     */
-    public string $scriptNonceTag = '{csp-script-nonce}';
+        /**
+         * Restringe as origens autorizadas a transmitir
+         * vídeo e áudio.
+         *
+         * @var list<string>|string|null
+         */
+        public $mediaSrc;
 
-    /**
-     * Replace nonce tag automatically
-     */
-    public bool $autoNonce = true;
-}
+        /**
+         * Permite o controle do Flash e de outros plugins.
+         *
+         * @var list<string>|string
+         */
+        public $objectSrc = 'self';
+
+        /**
+         * @var list<string>|string|null
+         */
+        public $manifestSrc;
+
+        /**
+         * Limita os tipos de plugins que uma página pode invocar.
+         *
+         * @var list<string>|string|null
+         */
+        public $pluginTypes;
+
+        /**
+         * Lista de ações permitidas.
+         *
+         * @var list<string>|string|null
+         */
+        public $sandbox;
+
+        /**
+         * Tag Nonce para estilo
+         */
+        public string $styleNonceTag = '{csp-style-nonce}';
+
+        /**
+         * Tag Nonce para script
+         */
+        public string $scriptNonceTag = '{csp-script-nonce}';
+
+        /**
+         * Substituir a tag nonce automaticamente
+         */
+        public bool $autoNonce = true;
+    }

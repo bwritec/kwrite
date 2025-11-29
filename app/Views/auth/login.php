@@ -53,11 +53,14 @@
                 <a href="<?= site_url('register') ?>">
                     Não tenho uma conta
                 </a>
+
+                <br>
+
+                <a href="<?= site_url('forgot-password') ?>">
+                    Esqueci minha senha
+                </a>
             </div>
         </div>
     </div>
 </div>
-
-
-
 <?= $this->endSection() ?>

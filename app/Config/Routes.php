@@ -30,3 +30,15 @@
      * /logout
      */
     $routes->get('/logout', 'AuthController::logout');
+
+    /**
+     * /forgot-password
+     */
+    $routes->get('/forgot-password', 'Auth\PasswordController::showForgot');
+    $routes->post('/forgot-password', 'Auth\PasswordController::sendResetLink');
+
+    /**
+     * /reset-password
+     */
+    $routes->get('/reset-password/(:any)', 'Auth\PasswordController::showReset/$1');
+    $routes->post('/reset-password', 'Auth\PasswordController::resetPassword');

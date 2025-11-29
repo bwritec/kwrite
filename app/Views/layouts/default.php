@@ -432,6 +432,25 @@
             left: 100%;
             top: 0;
         }
+
+        /**
+         * list-group-item
+         */
+        .list-group-item a
+        {
+            text-decoration: none;
+        }
+
+        .list-group-item.active
+        {
+            background-color: #FFE600;
+            border-color: #FFE600;
+        }
+
+        .list-group-item.active a
+        {
+            color: #000000;
+        }
     </style>
 
 </head>
@@ -562,17 +581,43 @@
                     </div>
 
                     <ul class="actions">
-                        <li class="list">
-                            <a href="<?= base_url() ?>index.php/register">
-                                Criar Conta
-                            </a>
-                        </li>
+                        <?php if (session()->has('user')): ?>
+                            <div class="dropdown">
+                                <?php
+                                    $fullName = session('user.name');
+                                    $firstName = explode(' ', trim($fullName))[0];
+                                ?>
+                                <a class="btn btn-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color: #000000;">
+                                    <?= esc($firstName) ?>
+                                </a>
 
-                        <li class="list">
-                            <a href="<?= base_url() ?>index.php/login">
-                                Entre
-                            </a>
-                        </li>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="<?= base_url() ?>index.php/dashboard">
+                                            Dashboard
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="<?= site_url('logout') ?>">
+                                            Sair
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        <?php else: ?>
+                            <li class="list">
+                                <a href="<?= base_url() ?>index.php/register">
+                                    Criar Conta
+                                </a>
+                            </li>
+
+                            <li class="list">
+                                <a href="<?= base_url() ?>index.php/login">
+                                    Entre
+                                </a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

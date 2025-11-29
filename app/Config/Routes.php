@@ -42,3 +42,8 @@
      */
     $routes->get('/reset-password/(:any)', 'Auth\PasswordController::showReset/$1');
     $routes->post('/reset-password', 'Auth\PasswordController::resetPassword');
+
+    /**
+     * /dashboard
+     */
+    $routes->get('/dashboard', 'Dashboard\HomeController::index');

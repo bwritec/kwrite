@@ -435,7 +435,7 @@
     </style>
 
 </head>
-<body>
+<body class="clearfix">
 
     <div class="navbar-mobile mb-3">
         <div class="container">

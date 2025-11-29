@@ -9,5 +9,7 @@
 
     /**
      * /
+     * /blank
      */
     $routes->get('/', 'Home::index');
+    $routes->get('/blank', 'Home::blank');

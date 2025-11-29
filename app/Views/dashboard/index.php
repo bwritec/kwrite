@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-3 col-lg-2 home-sidebar">
-                <ul class="list-group">
+                <ul class="list-group mb-3">
                     <li class="list-group-item active">
                         <a href="<?= base_url() ?>index.php/dashboard">
                             Dashboard

@@ -47,3 +47,13 @@
      * /dashboard
      */
     $routes->get('/dashboard', 'Dashboard\HomeController::index');
+
+    /**
+     * /dashboard/categories
+     */
+    $routes->get('/dashboard/categories', 'Dashboard\CategorieController::index');
+    $routes->get('/dashboard/categories/create', 'Dashboard\CategorieController::create');
+    $routes->post('/dashboard/categories/store', 'Dashboard\CategorieController::store');
+    $routes->get('/dashboard/categories/edit/(:num)', 'Dashboard\CategorieController::edit/$1');
+    $routes->post('/dashboard/categories/update/(:num)', 'Dashboard\CategorieController::update/$1');
+    $routes->get('/dashboard/categories/delete/(:num)', 'Dashboard\CategorieController::delete/$1');

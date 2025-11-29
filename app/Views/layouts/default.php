@@ -45,9 +45,7 @@
 <body>
 
 
-    <h1>
-        Kwrite CMS
-    </h1>
+    <?= $this->renderSection('content') ?>
 
 </body>
 </html>

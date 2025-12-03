@@ -5,6 +5,9 @@
     use App\Controllers\BaseController;
 
 
+    /**
+     *
+     */
     class HomeController extends BaseController
     {
         /**

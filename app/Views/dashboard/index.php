@@ -16,6 +16,12 @@
                 <?php if (session()->has('user') && session('user.admin') === '1'): ?>
                     <ul class="list-group">
                         <li class="list-group-item">
+                            <a href="<?= base_url() ?>index.php/dashboard/tags">
+                                Tags
+                            </a>
+                        </li>
+
+                        <li class="list-group-item">
                             <a href="<?= base_url() ?>index.php/dashboard/categories">
                                 Categorias
                             </a>

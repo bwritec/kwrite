@@ -15,7 +15,7 @@
     <!--
       - Título.
      -->
-    <title><?= esc(env('app.name')) ?> - Welcome to CodeIgniter 4!</title>
+    <title><?= esc(env('app.name')) ?> - <?= esc($title) ?></title>
 
     <!--
       - Favicon.

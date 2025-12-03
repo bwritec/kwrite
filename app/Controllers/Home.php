@@ -13,7 +13,9 @@
          */
         public function index(): string
         {
-            return view('index');
+            return view('index', [
+                "title" => "Página inicial"
+            ]);
         }
 
         /**
@@ -21,6 +23,8 @@
          */
         public function blank(): string
         {
-            return view('blank');
+            return view('blank', [
+                "title" => "Página em branco"
+            ]);
         }
     }

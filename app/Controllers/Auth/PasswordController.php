@@ -10,7 +10,9 @@ class PasswordController extends BaseController
 {
     public function showForgot()
     {
-        return view('auth/forgot_password');
+        return view('auth/forgot_password', [
+            "title" => "Esqueceu sua senha"
+        ]);
     }
 
     public function sendResetLink()
@@ -53,7 +55,10 @@ class PasswordController extends BaseController
 
     public function showReset($token)
     {
-        return view('auth/reset_password', ['token' => $token]);
+        return view('auth/reset_password', [
+            "title" => "Redefinir senha",
+            'token' => $token
+        ]);
     }
 
     public function resetPassword()

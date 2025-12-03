@@ -14,13 +14,13 @@
 
                 <?php if (session()->has('user') && session('user.admin') === '1'): ?>
                     <ul class="list-group">
-                        <li class="list-group-item">
+                        <li class="list-group-item active">
                             <a href="<?= base_url() ?>index.php/dashboard/tags">
                                 Tags
                             </a>
                         </li>
 
-                        <li class="list-group-item active">
+                        <li class="list-group-item">
                             <a href="<?= base_url() ?>index.php/dashboard/categories">
                                 Categorias
                             </a>
@@ -30,52 +30,40 @@
             </div>
 
             <div class="col-12 col-md-9 col-lg-10">
-                <h1><?= esc($title) ?></h1>
+                <h3>
+                    Criar Tag
+                </h3>
 
-                <form action="<?= site_url('dashboard/categories/store') ?>" method="post">
-                    <?= csrf_field() ?>
-
+                <form action="<?= site_url('dashboard/tags/store') ?>" method="post">
                     <div class="mb-3">
-                        <label>
+                        <label class="form-label">
                             Nome
                         </label>
 
-                        <input type="text" name="name" class="form-control" required value="<?= old('name') ?>">
+                        <input type="text" name="name" class="form-control <?= isset($errors['name']) ? 'is-invalid' : '' ?>" required>
+
+                        <?php if (isset($errors['name'])): ?>
+                            <div class="invalid-feedback">
+                                <?= $errors['name'] ?? '' ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mb-3">
-                        <label>
-                            Categoria Pai
-                        </label>
-
-                        <select name="parent" class="form-control">
-                            <option value="">Nenhuma</option>
-
-                            <?php foreach ($parents as $p): ?>
-                                <option value="<?= $p['id'] ?>"><?= esc($p['name']) ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>
-                            Slogan
-                        </label>
-
-                        <input type="text" name="slogan" class="form-control" value="<?= old('slogan') ?>">
-                    </div>
-
-                    <div class="mb-3">
-                        <label>
+                        <label class="form-label">
                             Descrição
                         </label>
 
-                        <textarea name="description" class="form-control"><?= old('description') ?></textarea>
+                        <textarea name="description" class="form-control"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-dark">
+                    <button class="btn btn-success">
                         Salvar
                     </button>
+
+                    <a href="<?= site_url('dashboard/tags') ?>" class="btn btn-secondary">
+                        Voltar
+                    </a>
                 </form>
             </div>
         </div>

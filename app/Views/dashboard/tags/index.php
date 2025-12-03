@@ -14,13 +14,13 @@
 
                 <?php if (session()->has('user') && session('user.admin') === '1'): ?>
                     <ul class="list-group">
-                        <li class="list-group-item">
+                        <li class="list-group-item active">
                             <a href="<?= base_url() ?>index.php/dashboard/tags">
                                 Tags
                             </a>
                         </li>
 
-                        <li class="list-group-item active">
+                        <li class="list-group-item">
                             <a href="<?= base_url() ?>index.php/dashboard/categories">
                                 Categorias
                             </a>
@@ -30,55 +30,53 @@
             </div>
 
             <div class="col-12 col-md-9 col-lg-10">
-                <h1><?= esc($title) ?></h1>
+                <h3 class="mb-3">
+                    Tags
+                </h3>
 
-                <a href="<?= site_url('dashboard/categories/create') ?>" class="btn btn-primary mb-3">
-                    + Nova Categoria
+                <a href="<?= site_url('dashboard/tags/create') ?>" class="btn btn-primary mb-3">
+                    + Nova Tag
                 </a>
 
-                <?php if (session()->getFlashdata('success')): ?>
+                <?php if (session()->has('success')): ?>
                     <div class="alert alert-success">
                         <?= session('success') ?>
                     </div>
                 <?php endif; ?>
 
-                <table class="table table-bordered">
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>#</th>
                             <th>Nome</th>
-                            <th>Categoria Pai</th>
-                            <th>Slogan</th>
+                            <th>Descrição</th>
+                            <th>Criada em</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <?php if (!empty($categories)): ?>
-                            <?php foreach ($categories as $cat): ?>
-                                <tr>
-                                    <td><?= $cat['id'] ?></td>
-                                    <td><?= esc($cat['name']) ?></td>
-                                    <td><?= esc($cat['parent_name'] ?? '-') ?></td>
-                                    <td><?= esc($cat['slogan']) ?></td>
-                                    <td>
-                                        <a href="<?= site_url('dashboard/categories/edit/'.$cat['id']) ?>" class="btn btn-warning btn-sm">
-                                            Editar
-                                        </a>
-
-                                        <a href="<?= site_url('dashboard/categories/delete/'.$cat['id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Excluir categoria?')">
-                                            Excluir
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
+                        <?php foreach ($tags as $tag): ?>
                             <tr>
-                                <td colspan="5" class="text-center">
-                                    Nenhuma categoria encontrada
+                                <td><?= $tag['id'] ?></td>
+                                <td><?= esc($tag['name']) ?></td>
+                                <td><?= esc($tag['description']) ?></td>
+                                <td><?= $tag['created_at'] ?></td>
+
+                                <td>
+                                    <a href="<?= site_url('dashboard/tags/edit/' . $tag['id']) ?>" class="btn btn-sm btn-warning">
+                                        Editar
+                                    </a>
+
+                                    <a href="<?= site_url('dashboard/tags/delete/' . $tag['id']) ?>" 
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Excluir esta tag?');">
+                                        Excluir
+                                    </a>
                                 </td>
+
                             </tr>
-                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
 

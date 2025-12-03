@@ -57,3 +57,13 @@
     $routes->get('/dashboard/categories/edit/(:num)', 'Dashboard\CategorieController::edit/$1');
     $routes->post('/dashboard/categories/update/(:num)', 'Dashboard\CategorieController::update/$1');
     $routes->get('/dashboard/categories/delete/(:num)', 'Dashboard\CategorieController::delete/$1');
+
+    /**
+     * /dashboard/tags
+     */
+    $routes->get('dashboard/tags', 'Dashboard\TagController::index');
+    $routes->get('dashboard/tags/create', 'Dashboard\TagController::create');
+    $routes->post('dashboard/tags/store', 'Dashboard\TagController::store');
+    $routes->get('dashboard/tags/edit/(:num)', 'Dashboard\TagController::edit/$1');
+    $routes->post('dashboard/tags/update/(:num)', 'Dashboard\TagController::update/$1');
+    $routes->get('dashboard/tags/delete/(:num)', 'Dashboard\TagController::delete/$1');

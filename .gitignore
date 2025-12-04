@@ -134,3 +134,6 @@ _modules/*
 
 /results/
 /phpunit*.xml
+
+# My
+fazer.txt

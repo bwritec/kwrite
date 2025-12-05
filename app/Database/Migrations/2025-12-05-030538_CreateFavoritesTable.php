@@ -32,6 +32,11 @@
                     'type' => 'INT',
                     'unsigned' => true
                 ],
+
+                'created_at' => [
+                    'type' => 'DATETIME',
+                    'null' => true,
+                ],
             ]);
 
             $this->forge->addKey('id', true);

@@ -90,15 +90,33 @@
                 </div>
             <?php else: ?>
                 <?php if (session()->has('user')): ?>
-                    <form action="<?= site_url('favorite') ?>/<?= esc($product["id"]) ?>" method="post">
-                        <?= csrf_field() ?>
+                    <?php if ($is_favorited): ?>
+                        <form action="<?= site_url('favorites/remove') ?>" method="post">
+                            <?= csrf_field() ?>
 
-                        <div style="width: 100%; display: block;">
-                            <button class="btn btn-warning btn-lg mb-3">
-                                <i class="fa-solid fa-heart"></i> Favoritar
-                            </button>
-                        </div>
-                    </form>
+                            <input type="hidden" name="user_id" value="<?= session("user.id") ?>">
+                            <input type="hidden" name="product_id" value="<?= esc($product["id"]) ?>">
+
+                            <div style="width: 100%; display: block;">
+                                <button class="btn btn-warning btn-lg mb-3">
+                                    <i class="fa-solid fa-heart"></i> Remover dos Favoritos
+                                </button>
+                            </div>
+                        </form>
+                    <?php else: ?>
+                        <form action="<?= site_url('favorites/add') ?>" method="post">
+                            <?= csrf_field() ?>
+
+                            <input type="hidden" name="user_id" value="<?= session("user.id") ?>">
+                            <input type="hidden" name="product_id" value="<?= esc($product["id"]) ?>">
+
+                            <div style="width: 100%; display: block;">
+                                <button class="btn btn-warning btn-lg mb-3">
+                                    <i class="fa-solid fa-heart"></i> Favoritar
+                                </button>
+                            </div>
+                        </form>
+                    <?php endif; ?>
                 <?php else: ?>
                     <div style="width: 100%; display: block;">
                         <a href="<?= site_url('login') ?>" class="btn btn-warning btn-lg mb-3">

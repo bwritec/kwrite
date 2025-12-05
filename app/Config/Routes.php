@@ -17,6 +17,12 @@
     $routes->get('/product/(:num)', 'ProductController::show/$1');
 
     /**
+     * Favorites
+     */
+    $routes->post('/favorites/add',    'FavoriteController::add');
+    $routes->post('/favorites/remove', 'FavoriteController::remove');
+
+    /**
      * /register
      */
     $routes->get('/register', 'RegisterController::index');
@@ -77,3 +83,8 @@
      */
     $routes->get('/dashboard/products', 'ProductsController::index', ['filter' => 'auth']);
     $routes->get('/dashboard/products/delete/(:num)', 'ProductsController::delete/$1', ['filter' => 'auth']);
+
+    /**
+     * /dashboard/favorites
+     */
+    $routes->get('/dashboard/favorites',  'FavoriteController::list');

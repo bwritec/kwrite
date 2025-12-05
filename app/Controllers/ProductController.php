@@ -9,6 +9,7 @@ use App\Models\ProductThumbnailModel;
 use App\Models\ProductCharacteristicModel;
 use App\Models\ProductCategoryModel;
 use App\Models\CategoryModel;
+use App\Models\FavoriteModel;
 
 class ProductController extends BaseController
 {
@@ -69,13 +70,20 @@ class ProductController extends BaseController
         $catId = $catJoin->select('category_id')->where('product_id', $id)->first();
         $category = $catId ? $categoryModel->find($catId['category_id']) : null;
 
+        /**
+         *
+         */
+        $favorites = new FavoriteModel();
+        $is_favorited = $favorites->isFavorited(session("user.id"), $product["id"]);
+
         return view('product/show', [
             'title' => esc($product['name']),
             'product' => $product,
             'photos' => $photos,
             'characteristics' => $characteristics,
             'category' => $category,
-            'last_products' => $last_products
+            'last_products' => $last_products,
+            'is_favorited' => $is_favorited
         ]);
     }
 }

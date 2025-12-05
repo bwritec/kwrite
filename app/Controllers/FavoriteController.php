@@ -5,12 +5,28 @@
     use App\Models\FavoriteModel;
     use CodeIgniter\RESTful\ResourceController;
 
-    class FavoriteController extends ResourceController
-    {
-        protected $modelName = FavoriteModel::class;
-        protected $format    = 'json';
 
-        // Adiciona aos favoritos
+    /**
+     *
+     */
+    class FavoriteController extends BaseController
+    {
+        /**
+         *
+         */
+        protected $favoriteModel;
+
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->favoriteModel = new FavoriteModel();
+        }
+
+        /**
+         * Adiciona aos favoritos
+         */
         public function add()
         {
             $user = session()->get('user');
@@ -24,7 +40,7 @@
             $productId = $this->request->getPost('product_id');
 
             // Evitar duplicado
-            $exists = $this->model
+            $exists = $this->favoriteModel
                 ->where('user_id', $userId)
                 ->where('product_id', $productId)
                 ->first();
@@ -35,7 +51,7 @@
                 ]);
             }
 
-            $this->model->insert([
+            $this->favoriteModel->insert([
                 'user_id'    => $userId,
                 'product_id' => $productId
             ]);
@@ -43,7 +59,9 @@
             return redirect()->back();
         }
 
-        // Remove dos favoritos
+        /**
+         * Remove dos favoritos
+         */
         public function remove()
         {
             $user = session()->get('user');
@@ -56,7 +74,7 @@
             $userId    = $this->request->getPost('user_id');
             $productId = $this->request->getPost('product_id');
 
-            $favorite = $this->model
+            $favorite = $this->favoriteModel
                 ->where('user_id', $userId)
                 ->where('product_id', $productId)
                 ->first();
@@ -66,7 +84,7 @@
                 return $this->failNotFound('Favorito não encontrado.');
             }
 
-            $this->model->delete($favorite['id']);
+            $this->favoriteModel->delete($favorite['id']);
 
             return redirect()->back();
         }
@@ -83,10 +101,15 @@
                 return redirect()->to('/login');
             }
 
-            $favorites = $this->model
+            $favorites = $this->favoriteModel
                 ->where('user_id', $user["id"])
                 ->findAll();
 
-            return $this->respond($favorites);
+            // return $this->respond($favorites);
+
+            return view('dashboard/favorites', [
+                'title' => 'Favoritos',
+                
+            ]);
         }
     }

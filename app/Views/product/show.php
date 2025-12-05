@@ -93,9 +93,11 @@
                     <form action="<?= site_url('favorite') ?>/<?= esc($product["id"]) ?>" method="post">
                         <?= csrf_field() ?>
 
-                        <button class="btn btn-warning btn-lg mb-3">
-                            <i class="fa-solid fa-heart"></i> Favoritar
-                        </button>
+                        <div style="width: 100%; display: block;">
+                            <button class="btn btn-warning btn-lg mb-3">
+                                <i class="fa-solid fa-heart"></i> Favoritar
+                            </button>
+                        </div>
                     </form>
                 <?php else: ?>
                     <div style="width: 100%; display: block;">

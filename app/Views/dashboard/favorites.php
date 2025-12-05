@@ -74,12 +74,45 @@
 
             <div class="col-12 col-md-9 col-lg-10">
                 <h1>
-                    Favoritos
+                    Meus Favoritos
                 </h1>
 
-                
+                <div class="row mb-3">
+                    <?php foreach ($favorites as $item): ?>
+                        <div class="col-12 mb-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <!-- imagem -->
+                                    <?php if (!empty($item['thumbnail'])): ?>
+                                        <div style="float: left;">
+                                            <img src="<?= base_url() ?><?= $item['thumbnail'] ?>" class="card-img-top" alt="<?= esc($item['name']) ?>" style="width: 150px; margin-right: 1rem; display: block;">
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <h5 class="card-title">
+                                        <?= esc($item['name']) ?>
+                                    </h5>
+
+                                    <?php if (!empty($item['price'])): ?>
+                                        <p class="card-text">
+                                            <strong>R$ <?= number_format($item['price'], 2, ',', '.') ?></strong>
+                                        </p>
+                                    <?php endif; ?>
+
+                                    <a href="<?= site_url("product") ?>/<?= $item['id'] ?>" class="btn btn-primary">
+                                        Ver Produto
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <?= $this->endSection() ?>
+
+
+    

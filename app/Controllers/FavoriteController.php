@@ -101,15 +101,52 @@
                 return redirect()->to('/login');
             }
 
-            $favorites = $this->favoriteModel
-                ->where('user_id', $user["id"])
-                ->findAll();
+            /**
+             * ou outra forma.
+             */
+            $userId = $user["id"];
 
-            // return $this->respond($favorites);
+            $favoritesModel = new \App\Models\FavoriteModel();
+            $productsModel  = new \App\Models\ProductModel();
+            $thumbnailModel = new \App\Models\ProductThumbnailModel();
+
+            /**
+             * 1. Buscar todos os favoritos do usuário.
+             */
+            $favorites = $favoritesModel
+                            ->where('user_id', $userId)
+                            ->findAll();
+
+            $products = [];
+
+            /**
+             * 2. Para cada favorito, buscar produto + thumbnail
+             */
+            foreach ($favorites as $fav)
+            {
+                $product = $productsModel->find($fav['product_id']);
+
+                if ($product)
+                {
+                    $thumbnail = $thumbnailModel
+                        ->where('product_id', $fav['product_id'])
+                        ->first();
+
+                    /**
+                     * Criar estrutura combinada
+                     */
+                    $products[] = [
+                        'id'        => $product['id'],
+                        'name'      => $product['name'],
+                        'price'     => $product['price_final'],
+                        'thumbnail' => $thumbnail['name'] ?? null,
+                    ];
+                }
+            }
 
             return view('dashboard/favorites', [
                 'title' => 'Favoritos',
-                
+                'favorites' => $products
             ]);
         }
     }

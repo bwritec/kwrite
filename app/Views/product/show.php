@@ -82,22 +82,40 @@
 
             <h4 class="text-success mb-3">R$ <?= number_format($product['price_final'], 2, ',', '.') ?></h4>
 
-            <form action="<?= site_url('favorite') ?>/<?= esc($product["id"]) ?>" method="post">
-                <?= csrf_field() ?>
+            <?php if (session()->has('user')): ?>
+                <form action="<?= site_url('favorite') ?>/<?= esc($product["id"]) ?>" method="post">
+                    <?= csrf_field() ?>
 
-                <button class="btn btn-warning btn-lg mb-3">
-                    <i class="fa-solid fa-heart"></i>
-                </button>
-            </form>
+                    <button class="btn btn-warning btn-lg mb-3">
+                        <i class="fa-solid fa-heart"></i> Favoritar
+                    </button>
+                </form>
+            <?php else: ?>
+                <div style="width: 100%; display: block;">
+                    <a href="<?= site_url('login') ?>" class="btn btn-warning btn-lg mb-3">
+                        <i class="fa-solid fa-heart"></i> Favoritar
+                    </a>
+                </div>
+            <?php endif; ?>
 
             <?php if ($product['demonstration']): ?>
                 <button class="btn btn-dark disabled btn-lg mb-3">
                     Comprar Agora
                 </button>
             <?php else: ?>
-                <button class="btn btn-dark btn-lg mb-3">
-                    Comprar Agora
-                </button>
+                <?php if (session()->has('user')): ?>
+                    <div style="width: 100%; display: block;">
+                        <a href="<?= site_url('buy') ?>/<?= esc($product["id"]) ?>" class="btn btn-dark btn-lg mb-3">
+                            Comprar Agora
+                        </a>
+                    </div>
+                <?php else: ?>
+                    <div style="width: 100%; display: block;">
+                        <a href="<?= site_url('login') ?>" class="btn btn-dark btn-lg mb-3">
+                            Comprar Agora
+                        </a>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     </div>

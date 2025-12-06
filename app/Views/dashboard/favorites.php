@@ -77,9 +77,13 @@
                     Meus Favoritos
                 </h1>
 
-                <div class="row mb-3">
+                <?php if (count($favorites) == 0): ?>
+                    <p>
+                        Nenhum favorito disponível
+                    </p>
+                <?php else: ?>
                     <?php foreach ($favorites as $item): ?>
-                        <div class="col-12 mb-4">
+                        <div class="mb-3" style="width: 100%; float: left;">
                             <div class="card shadow-sm h-100">
                                 <div class="card-body">
                                     <!-- imagem -->
@@ -103,16 +107,12 @@
                                         Ver Produto
                                     </a>
                                 </div>
-
                             </div>
                         </div>
                     <?php endforeach; ?>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </div>
 <?= $this->endSection() ?>
-
-
-    

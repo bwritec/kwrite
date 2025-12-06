@@ -690,22 +690,22 @@
             </div>
 
             <div class="sidebar-menu clearfix" style="float: left; width: 100%; margin-top: 1rem;">
-                <div class="separator" style="width: 100%; height: 35px; background: #eee; line-height: 35px; padding: 0 1rem;">
+                <div style="width: 100%; height: 35px; background: #eee; line-height: 35px; padding: 0 1rem;">
                     Categorias
                 </div>
 
-                <ul class="links-menu">
+                <ul style="padding: 0 1rem;">
                     <?php foreach ($global_categories as $cat): ?>
                         <?php if (isset($cat['children'])): ?>
-                            <li>
-                                <a href="<?= site_url('categorie/' . $cat['id']) ?>">
+                            <li style="list-style-type: none;">
+                                <a style="display: block; width: 100%; height: 35px; line-height: 35px; text-decoration: none; color: #333;" href="<?= site_url('categorie/' . $cat['id']) ?>">
                                     <?= esc($cat['name']) ?>
                                 </a>
 
-                                <ul>
+                                <ul style="padding-left: 1rem;">
                                     <?php foreach ($cat['children'] as $child): ?>
-                                        <li>
-                                            <a href="<?= site_url('categorie/' . $child['id']) ?>">
+                                        <li style="list-style-type: none;">
+                                            <a style="display: block; width: 100%; height: 35px; line-height: 35px; text-decoration: none; color: #333;" href="<?= site_url('categorie/' . $child['id']) ?>">
                                                 <?= esc($child['name']) ?>
                                             </a>
                                         </li>
@@ -713,8 +713,8 @@
                                 </ul>
                             </li>
                         <?php else: ?>
-                            <li>
-                                <a href="<?= site_url('categorie/' . $cat['id']) ?>">
+                            <li style="list-style-type: none;">
+                                <a style="display: block; width: 100%; height: 35px; line-height: 35px; text-decoration: none; color: #333;" href="<?= site_url('categorie/' . $cat['id']) ?>">
                                     <?= esc($cat['name']) ?>
                                 </a>
                             </li>
@@ -724,7 +724,11 @@
             </div>
 
             <div class="menu">
-                <ul class="actions">
+                <div style="width: 100%; height: 35px; background: #eee; line-height: 35px; padding: 0 1rem;">
+                    Ações
+                </div>
+
+                <ul style="padding: 0 1rem;">
                     <?php if (session()->has('user')): ?>
                         <div class="dropdown">
                             <?php
@@ -750,14 +754,14 @@
                             </ul>
                         </div>
                     <?php else: ?>
-                        <li class="list">
-                            <a href="<?= base_url() ?>index.php/register">
+                        <li style="list-style-type: none;">
+                            <a style="display: block; width: 100%; height: 35px; line-height: 35px; text-decoration: none; color: #333;" href="<?= base_url() ?>index.php/register">
                                 Criar Conta
                             </a>
                         </li>
 
-                        <li class="list">
-                            <a href="<?= base_url() ?>index.php/login">
+                        <li style="list-style-type: none;">
+                            <a style="display: block; width: 100%; height: 35px; line-height: 35px; text-decoration: none; color: #333;" href="<?= base_url() ?>index.php/login">
                                 Entre
                             </a>
                         </li>

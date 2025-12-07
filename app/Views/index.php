@@ -23,7 +23,19 @@
                                     </span>
 
                                     <p class="fw-bold" style="color: #333;">
-                                        R$ <?= number_format($p['price_final'], 2, ',', '.') ?>
+                                        R$
+
+                                        <?php
+
+                                            $env = env('app.rate');
+                                            $taxa = (float) $env ?: 0;
+                                            $price = str_replace(",", ".", $p['price']);
+                                            $price_final = $price + ($price * ($taxa / 100));
+                                            $price_final = number_format($price_final, 2, ',', '.');
+
+                                            echo $price_final;
+
+                                        ?>
                                     </p>
                                 </a>
                             </div>

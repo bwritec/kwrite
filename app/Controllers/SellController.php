@@ -158,20 +158,9 @@ class SellController extends BaseController
          * Verifica sé produto é de demonstração ou não.
          */
         $demonstration = $this->request->getPost('demonstration');
-        if (session('user.admin') === '1')
+        if (session('user.admin') !== '1')
         {
-            if ($demonstration == "Sim")
-            {
-                $demonstration = true;
-            }
-
-            if ($demonstration == "Não")
-            {
-                $demonstration = false;
-            }
-        } else
-        {
-            $demonstration = false;
+            $demonstration = "0";
         }
 
         $productModel = new ProductModel();
@@ -182,8 +171,7 @@ class SellController extends BaseController
             'demonstration' => $demonstration,
             'description' => $this->request->getPost('description'),
             'amount' => $this->request->getPost('amount'),
-            'price' => $price,
-            'price_final' => $price_final
+            'price' => $price
         ]);
 
         /**

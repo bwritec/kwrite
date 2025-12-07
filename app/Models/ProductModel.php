@@ -30,7 +30,6 @@
             'description',
             'amount',
             'price',
-            'price_final',
             'demonstration',
             'paused',
             'created_at'

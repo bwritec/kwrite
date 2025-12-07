@@ -99,22 +99,42 @@
                                 <div class="card-body">
                                     <img src="<?= esc($product['thumbnail']) ?>" alt="Miniatura do produto" style="width: 200px; float: left; margin-right: 1rem;">
 
-                                    <h5 class="card-title"><?= esc($product['name']) ?></h5>
-                                    <p class="card-text text-muted small"><?= esc($product['description']) ?></p>
-                                    <p class="fw-bold mb-2">R$ <?= number_format($product['price'], 2, ',', '.') ?></p>
+                                    <h5 class="card-title">
+                                        <?= esc($product['name']) ?>
+                                    </h5>
 
-                                    <a href="<?= site_url('dashboard/products/delete/' . $product['id']) ?>"
-                                       class="btn btn-sm btn-danger"
-                                       onclick="return confirm('Tem certeza que deseja excluir este produto?')">
+                                    <p class="card-text text-muted small">
+                                        <?= substr($product['description'], 0, 120) . '...'; ?>
+                                    </p>
+
+                                    <p class="fw-bold mb-2">
+                                        R$
+
+                                        <?php
+
+                                            $env = env('app.rate');
+                                            $taxa = (float) $env ?: 0;
+                                            $price = str_replace(",", ".", $product['price']);
+                                            $price_final = $price + ($price * ($taxa / 100));
+                                            $price_final = number_format($price_final, 2, ',', '.');
+
+                                            echo $price_final;
+
+                                        ?>
+                                    </p>
+
+                                    <a href="<?= site_url('dashboard/products/delete/' . $product['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este produto?')">
                                         Excluir
+                                    </a>
+
+                                    <a href="<?= site_url('product/' . $product['id']) ?>" class="btn btn-sm btn-primary">
+                                        Ver Produtor
                                     </a>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
-
-
 
             </div>
         </div>

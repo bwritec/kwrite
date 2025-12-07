@@ -78,15 +78,6 @@
                     'default' => 0.00,
                 ],
 
-                /**
-                 * Preço com calculo da taxa de porcentagem.
-                 */
-                'price_final' => [
-                    'type' => 'FLOAT',
-                    'constraint' => '10,2', // Total de dígitos, casas decimais.
-                    'default' => 0.00,
-                ],
-
                 'created_at' => [
                     'type' => 'DATETIME',
                     'null' => true

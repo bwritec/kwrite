@@ -80,7 +80,21 @@
                 </p>
             <?php endif; ?>
 
-            <h4 class="text-success mb-3">R$ <?= number_format($product['price_final'], 2, ',', '.') ?></h4>
+            <h4 class="text-success mb-3">
+                R$
+
+                <?php
+
+                    $env = env('app.rate');
+                    $taxa = (float) $env ?: 0;
+                    $price = str_replace(",", ".", $product['price']);
+                    $price_final = $price + ($price * ($taxa / 100));
+                    $price_final = number_format($price_final, 2, ',', '.');
+
+                    echo $price_final;
+
+                ?>
+            </h4>
 
             <?php if ($product['demonstration']): ?>
                 <div style="width: 100%; display: block;">
@@ -199,7 +213,19 @@
                                     </span>
 
                                     <p class="fw-bold" style="color: #333;">
-                                        R$ <?= number_format($p['price'], 2, ',', '.') ?>
+                                        R$
+
+                                        <?php
+
+                                            $env = env('app.rate');
+                                            $taxa = (float) $env ?: 0;
+                                            $price = str_replace(",", ".", $p['price']);
+                                            $price_final = $price + ($price * ($taxa / 100));
+                                            $price_final = number_format($price_final, 2, ',', '.');
+
+                                            echo $price_final;
+
+                                        ?>
                                     </p>
                                 </a>
                             </div>

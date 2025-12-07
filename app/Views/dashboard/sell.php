@@ -126,7 +126,7 @@
                             </label>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="demonstration" id="demonstrationFalse" value="Não" checked>
+                                <input class="form-check-input" type="radio" name="demonstration" id="demonstrationFalse" value="0">
 
                                 <label class="form-check-label" for="demonstrationFalse">
                                     Não
@@ -134,7 +134,7 @@
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="demonstration" id="demonstrationTrue" value="Sim">
+                                <input class="form-check-input" type="radio" name="demonstration" id="demonstrationTrue" value="1">
 
                                 <label class="form-check-label" for="demonstrationTrue">
                                     Sim

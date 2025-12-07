@@ -133,12 +133,21 @@
                         ->first();
 
                     /**
+                     * Calcula a taxa da aplicação.
+                     */
+                    $env = env('app.rate');
+                    $taxa = (float) $env ?: 0;
+                    $price = $product['price'];
+                    $price = str_replace(",", ".", $price);
+                    $price_final = $price + ($price * ($taxa / 100));
+
+                    /**
                      * Criar estrutura combinada
                      */
                     $products[] = [
                         'id'        => $product['id'],
                         'name'      => $product['name'],
-                        'price'     => $product['price_final'],
+                        'price'     => $price_final,
                         'thumbnail' => $thumbnail['name'] ?? null,
                     ];
                 }

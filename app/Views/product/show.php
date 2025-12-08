@@ -159,6 +159,15 @@
                     </div>
                 <?php endif; ?>
             <?php endif; ?>
+
+            <div class="mb-3">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="cep" placeholder="Digite seu CEP">
+                    <button class="btn btn-warning" onclick="calcularFrete()">Calcular frete</button>
+                </div>
+
+                <div id="freteResultado"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -257,6 +266,33 @@
             });
         });
     });
+
+    async function calcularFrete()
+    {
+        const cep = document.getElementById('cep').value;
+
+        const r = await fetch('<?= site_url('frete/calcular') ?>?product_id=<?= $product['id'] ?>&cep=' + cep);
+        const data = await r.json();
+
+        let html = "";
+
+        if (data.hasOwnProperty("errors"))
+        {
+            html += "<p>Não foi possivel calcular o frete</p>"
+        } else
+        {
+            data.forEach(frete => {
+                html += '<div class="form-check">';
+                html += '<input class="form-check-input" type="radio" name="frete" id="frete'+ frete["name"] +'">';
+                html += '<label class="form-check-label" for="frete'+ frete["name"] +'">';
+                html += '<span class="badge text-bg-warning">' + frete["name"] + '</span>' + " R$ " + frete["price"];
+                html += '</label>';
+                html += '</div>';
+            });
+        }
+
+        document.getElementById('freteResultado').innerHTML = html;
+    }
 </script>
 
 <style>

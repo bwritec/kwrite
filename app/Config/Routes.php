@@ -17,6 +17,11 @@
     $routes->get('/product/(:num)', 'ProductController::show/$1');
 
     /**
+     * /frete/calcular
+     */
+    $routes->get('/frete/calcular', 'FreteController::calcular');
+
+    /**
      * Favorites
      */
     $routes->post('/favorites/add',    'FavoriteController::add');

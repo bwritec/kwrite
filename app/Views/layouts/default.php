@@ -979,9 +979,6 @@
         </div>
     </footer>
 
-    
-    <script type="text/javascript" src="<?= base_url() ?>dist/js/script.js"></script>
-
     <!--
       - Outros scripts.
      -->

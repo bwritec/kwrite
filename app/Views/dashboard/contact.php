@@ -67,6 +67,12 @@
                                 Categorias
                             </a>
                         </li>
+
+                        <li class="list-group-item">
+                            <a href="<?= base_url() ?>index.php/dashboard/links">
+                                Links
+                            </a>
+                        </li>
                     </ul>
                 <?php endif; ?>
             </div>

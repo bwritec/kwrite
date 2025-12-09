@@ -78,6 +78,16 @@
     $routes->get('/dashboard/categories/delete/(:num)', 'CategoryController::delete/$1');
 
     /**
+     * /dashboard/links
+     */
+    $routes->get('/dashboard/links', 'LinkController::index');
+    $routes->get('/dashboard/links/create', 'LinkController::create');
+    $routes->post('/dashboard/links/store', 'LinkController::store');
+    $routes->get('/dashboard/links/edit/(:num)', 'LinkController::edit/$1');
+    $routes->post('/dashboard/links/update/(:num)', 'LinkController::update/$1');
+    $routes->get('/dashboard/links/delete/(:num)', 'LinkController::delete/$1');
+
+    /**
      * /dashboard/sell
      */
     $routes->get('/dashboard/sell', 'SellController::index', ['filter' => 'auth']);

@@ -285,12 +285,15 @@
         } else
         {
             data.forEach(frete => {
-                html += '<div class="form-check">';
-                html += '<input class="form-check-input" type="radio" name="frete" id="frete'+ frete["name"] +'">';
-                html += '<label class="form-check-label" for="frete'+ frete["name"] +'">';
-                html += '<span class="badge text-bg-warning">' + frete["name"] + '</span>' + " R$ " + frete["price"];
-                html += '</label>';
-                html += '</div>';
+                if (frete.hasOwnProperty("price"))
+                {
+                    html += '<div class="form-check">';
+                    html += '<input class="form-check-input" type="radio" name="frete" id="frete'+ frete["name"] +'">';
+                    html += '<label class="form-check-label" for="frete'+ frete["name"] +'">';
+                    html += '<span class="badge text-bg-warning">' + frete["name"] + '</span>' + " R$ " + frete["price"];
+                    html += '</label>';
+                    html += '</div>';
+                }
             });
         }
 

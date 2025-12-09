@@ -102,11 +102,11 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="open_in_new_window" value="1" id="openInNewTabCheck">
+
+                        <label class="form-check-label" for="openInNewTabCheck">
                             Abrir em nova aba ?
                         </label>
-
-                        <input type="checkbox" class="form-check-input" name="open_in_new_window" value="1">
                     </div>
 
                     <button class="btn btn-dark" type="submit">

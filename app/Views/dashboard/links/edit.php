@@ -78,21 +78,38 @@
             </div>
 
             <div class="col-12 col-md-9 col-lg-10">
-                <h2>Editar Link</h2>
+                <h1>Editar Link</h1>
+
                 <form method="post" action="/dashboard/links/update/<?= $link['id'] ?>">
-                <label>Nome:</label>
-                <input type="text" name="name" value="<?= $link['name'] ?>" required><br><br>
+                    <?= csrf_field() ?>
 
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Nome
+                        </label>
 
-                <label>URL:</label>
-                <input type="text" name="url" value="<?= $link['url'] ?>" required><br><br>
+                        <input type="text" name="name" class="form-control" value="<?= $link['name'] ?>" required>
+                    </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">
+                            URL
+                        </label>
 
-                <label>Abrir nova aba?</label>
-                <input type="checkbox" name="open_in_new_window" value="1" <?= $link['open_in_new_window'] ? 'checked' : '' ?>><br><br>
+                        <input type="text" name="url" class="form-control" value="<?= $link['url'] ?>" required>
+                    </div>
 
+                    <div class="mb-3">
+                        <input type="checkbox" class="form-check-input" name="open_in_new_window" value="1" <?= $link['open_in_new_window'] ? 'checked' : '' ?> id="openInNewTabCheck">
 
-                <button type="submit">Atualizar</button>
+                        <label class="form-check-label" for="openInNewTabCheck">
+                            Abrir nova aba?
+                        </label>
+                    </div>
+
+                    <button class="btn btn-dark" type="submit">
+                        Atualizar
+                    </button>
                 </form>
             </div>
         </div>

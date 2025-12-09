@@ -115,7 +115,7 @@
                         <input type="checkbox" class="form-check-input" name="open_in_new_window" value="1" <?= $link['open_in_new_window'] ? 'checked' : '' ?> id="openInNewTabCheck">
 
                         <label class="form-check-label" for="openInNewTabCheck">
-                            Abrir nova aba?
+                            Abrir em nova aba ?
                         </label>
                     </div>
 

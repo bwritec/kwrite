@@ -299,7 +299,7 @@
         .sidebar-mobile
         {
             background-color: rgba(0, 0, 0, 0.8);
-            position: absolute;
+            position: fixed;
             height: 100vh;
             display: none;
             z-index: 999;
@@ -608,9 +608,10 @@
         {
             transition: all 0.3s ease;
             position: fixed;
-            left: 0;
-            right: 0;
+            z-index: -1;
             bottom: 0;
+            right: 0;
+            left: 0;
         }
 
         /**
@@ -685,7 +686,7 @@
     </div>
 
     <div class="sidebar-mobile">
-        <div class="box" style="height: calc(100vh - 45px);">
+        <div class="box">
             <div class="sidebar-logo">
                 <a href="<?= base_url() ?>index.php" class="text-dark">
                     <img src="<?= base_url() ?>dist/img/logo.png">

@@ -59,7 +59,124 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="/install.php?step=1" method="POST">
-                                    Passo 1
+                                    <!--
+                                      - Nav tabs
+                                     -->
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="app-tab" data-bs-toggle="tab" data-bs-target="#app" type="button" role="tab">
+                                                App
+                                            </button>
+                                        </li>
+
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="database-tab" data-bs-toggle="tab" data-bs-target="#database" type="button" role="tab">
+                                                Database
+                                            </button>
+                                        </li>
+
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="email-tab" data-bs-toggle="tab" data-bs-target="#email" type="button" role="tab">
+                                                Email
+                                            </button>
+                                        </li>
+
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="token-tab" data-bs-toggle="tab" data-bs-target="#token" type="button" role="tab">
+                                                Token
+                                            </button>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content mt-3" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="app" role="tabpanel">
+                                            <div class="mb-3">
+                                                <label for="app_name" class="form-label">
+                                                    Nome do site
+                                                </label>
+
+                                                <input type="text" name="app_name" id="app_name" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="app_url" class="form-label">
+                                                    URL
+                                                </label>
+
+                                                <input type="text" name="app_url" id="app_url" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="app_rate" class="form-label">
+                                                    Taxa do site
+                                                </label>
+
+                                                <div class="input-group mb-3">
+                                                    <input type="text" name="app_rate" id="app_rate" class="form-control">
+
+                                                    <span class="input-group-text">
+                                                        %
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="database" role="tabpanel">
+                                            <div class="mb-3">
+                                                <label for="database_hostname" class="form-label">
+                                                    Hostname
+                                                </label>
+
+                                                <input type="text" name="database_hostname" id="database_hostname" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="database_port" class="form-label">
+                                                    Porta
+                                                </label>
+
+                                                <input type="text" name="database_port" id="database_port" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="database_name" class="form-label">
+                                                    Nome do banco de dados
+                                                </label>
+
+                                                <input type="text" name="database_name" id="database_name" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="database_username" class="form-label">
+                                                    Usuário
+                                                </label>
+
+                                                <input type="text" name="database_username" id="database_username" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="database_password" class="form-label">
+                                                    Senha
+                                                </label>
+
+                                                <input type="text" name="database_password" id="database_password" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="email" role="tabpanel">
+                                            <h5>Conteúdo email</h5>
+                                            <p>Texto da aba email.</p>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="token" role="tabpanel">
+                                            <h5>Conteúdo token's</h5>
+                                            <p>Texto da aba token.</p>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-dark">
+                                        Salvar
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -102,8 +219,9 @@
                                 Tudo que isto faz é preencher as informações do banco de
                                 dados, smtp, app e token's de serviços em um arquivo de
                                 configuração. Você também pode simplesmente abrir
-                                .env.sample em um editor de texto, preencher suas
-                                informações e salvar como <strong>.env</strong>
+                                <strong>.env.sample</strong> em um editor de texto,
+                                preencher suas informações e salvar como
+                                <strong>.env</strong>.
                             </p>
 
                             <p>

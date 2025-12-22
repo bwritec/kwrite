@@ -14,6 +14,66 @@
         exit;
     }
 
+    /**
+     * Valida sé o campo está vazio.
+     * 
+     * @param $key string | Nome do campo.
+     * @return bool
+     */
+    function is_empty($key)
+    {
+        /**
+         * Questão: A chave $key foi enviado nesse form ?
+         */
+        if (array_key_exists($key, $_POST))
+        {
+            /**
+             * Obtem o valor de $key.
+             */
+            $value = $_POST[$key];
+
+            /**
+             * Limpa espaços em branco.
+             */
+            $value = trim($value);
+
+            /**
+             * Faz a validação.
+             */
+            return strlen($value) == 0;
+        }
+
+        /**
+         * Devolve um false.
+         */
+        return false;
+    }
+
+    /**
+     * Variável com erros de formulário.
+     */
+    $errors = array();
+
+    /**
+     * Questão: é um envio de formulário ?
+     */
+    if (strtoupper($_SERVER["REQUEST_METHOD"]) == "POST")
+    {
+        /**
+         * Questão: a variável de passo existe ?
+         */
+        if (array_key_exists("step", $_GET))
+        {
+            /**
+             * Passo 1.
+             */
+            if ($_GET["step"] == "1")
+            {
+                echo "Entrou aqui";
+            }
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html>

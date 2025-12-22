@@ -164,13 +164,79 @@
                                         </div>
 
                                         <div class="tab-pane fade" id="email" role="tabpanel">
-                                            <h5>Conteúdo email</h5>
-                                            <p>Texto da aba email.</p>
+                                            <div class="mb-3">
+                                                <label for="email_from_email" class="form-label">
+                                                    Do Email
+                                                </label>
+
+                                                <input type="text" name="email_from_email" id="email_from_email" class="form-control" placeholder="nao-responder@kwrite.com.br">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="email_from_name" class="form-label">
+                                                    Do Nome
+                                                </label>
+
+                                                <input type="text" name="email_from_name" id="email_from_name" class="form-control" placeholder="Kwrite">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="email_protocol" class="form-label">
+                                                    Protocolo
+                                                </label>
+
+                                                <input type="text" name="email_protocol" id="email_protocol" class="form-control" value="smtp" disabled>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="email_host" class="form-label">
+                                                    Host
+                                                </label>
+
+                                                <input type="text" name="email_host" id="email_host" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="email_user" class="form-label">
+                                                    Usuário
+                                                </label>
+
+                                                <input type="text" name="email_user" id="email_user" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="email_password" class="form-label">
+                                                    Senha
+                                                </label>
+
+                                                <input type="text" name="email_password" id="email_password" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="email_port" class="form-label">
+                                                    Porta
+                                                </label>
+
+                                                <input type="text" name="email_port" id="email_port" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="email_crypto" class="form-label">
+                                                    Criptografia
+                                                </label>
+
+                                                <input type="text" name="email_crypto" id="email_crypto" class="form-control" value="tls">
+                                            </div>
                                         </div>
 
                                         <div class="tab-pane fade" id="token" role="tabpanel">
-                                            <h5>Conteúdo token's</h5>
-                                            <p>Texto da aba token.</p>
+                                            <div class="mb-3">
+                                                <label for="token_melhorenvio" class="form-label">
+                                                    Melhor Envio
+                                                </label>
+
+                                                <textarea name="token_melhorenvio" id="token_melhorenvio" class="form-control"></textarea>
+                                            </div>
                                         </div>
                                     </div>
 

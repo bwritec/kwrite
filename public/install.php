@@ -60,7 +60,7 @@
      *     setEnvValue("app.name", "kwrite");
      *     setEnvValue("app.rate", "25");
      */
-    public function setEnvValue($key, $value)
+    function setEnvValue($key, $value)
     {
         $path = dirname(__DIR__) . DIRECTORY_SEPARATOR . ".env";
 

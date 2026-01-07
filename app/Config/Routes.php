@@ -19,9 +19,12 @@
     /**
      * /install
      * /install/database/migrate
+     * /install/account/admin
      */
     $routes->get("/install/database/migrate", "InstallController::migrate");
     $routes->post("/install/database/migrate", "InstallController::migrate_install");
+    $routes->get("/install/account/admin", "InstallController::admin");
+    $routes->post("/install/account/admin", "InstallController::admin_make");
 
     /**
      * /frete/calcular

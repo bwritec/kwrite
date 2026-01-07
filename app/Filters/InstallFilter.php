@@ -24,6 +24,14 @@
                     return redirect()->to('/install/database/migrate');
                 }
             }
+
+            if ($path != "install/account/admin")
+            {
+                if (env('installer.account.admin') == "0")
+                {
+                    return redirect()->to('/install/account/admin');
+                }
+            }
         }
 
         public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

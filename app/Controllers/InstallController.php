@@ -3,6 +3,7 @@
     namespace App\Controllers;
 
     use CodeIgniter\Controller;
+    use App\Models\UserModel;
 
 
     /**
@@ -10,6 +11,69 @@
      */
     class InstallController extends Controller
     {
+        /**
+         * Tela para usuario criar uma conta de
+         * administrador.
+         */
+        public function admin()
+        {
+            if (env('installer.account.admin') == "1")
+            {
+                return redirect()->to('/');
+            }
+
+            $data = array(
+                "title" => "Instalação do banco de dados"
+            );
+
+            return view("install/admin", $data);
+        }
+
+        /**
+         * Salvar a conta do usuario.
+         */
+        public function admin_make()
+        {
+            if (env('installer.account.admin') == "1")
+            {
+                return redirect()->to('/');
+            }
+
+            $userModel = new UserModel();
+
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'name'  => 'required|min_length[3]',
+                'email' => 'required|valid_email|is_unique[users.email]',
+                'cpf' => 'required|exact_length[14]|is_unique[users.cpf]|is_cpf',
+                'password' => 'required|min_length[6]',
+            ]);
+
+            if (!$validation->withRequest($this->request)->run()) {
+                return view('install/admin', [
+                    'title' => 'Cadastro de Usuário',
+                    'errors' => $validation->getErrors(),
+                ]);
+            }
+
+            $userModel->save([
+                'name' => $this->request->getPost('name'),
+                'email' => $this->request->getPost('email'),
+                'cpf' => preg_replace('/[^0-9]/', '', $this->request->getPost('cpf')),
+                'password' => $this->request->getPost('password'),
+                'admin' => 1
+            ]);
+
+            /**
+             * Atualizar o status de admin no .env
+             */
+            $this->setEnvValue("installer.account.admin", "1");
+
+            return redirect()
+                ->to('/install/account/admin')
+                ->with('success', 'Usuário cadastrado com sucesso!');
+        }
+
         /**
          * Tela para usuario fazer a instalação.
          */

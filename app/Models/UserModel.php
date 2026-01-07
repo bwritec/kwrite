@@ -37,6 +37,7 @@
             'name',
             'email',
             'cpf',
+            'admin',
             'password',
             'created_at'
         ];

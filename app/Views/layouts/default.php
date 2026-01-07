@@ -282,14 +282,14 @@
 
         .informar-cep-box .card-body input
         {
-            width: calc(100% - 84px);
+            width: calc(100% - 88px);
             margin-right: 8px;
             float: left;
         }
 
         .informar-cep-box .card-body button
         {
-            width: 76px;
+            width: 80px;
             float: left;
         }
 

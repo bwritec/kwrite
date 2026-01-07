@@ -13,8 +13,14 @@
         /**
          * Tela para usuario fazer a instalação.
          */
-        public function migrate(): string
+        public function migrate()
         {
+            if (env('installer.database.migration') == "1" &&
+                env('installer.database.seeds') == "1")
+            {
+                return redirect()->to('/');
+            }
+
             $data = array(
                 "title" => "Instalação do banco de dados"
             );
@@ -28,6 +34,12 @@
          */
         public function migrate_install()
         {
+            if (env('installer.database.migration') == "1" &&
+                env('installer.database.seeds') == "1")
+            {
+                return redirect()->to('/');
+            }
+
             $migrate = \Config\Services::migrations();
 
             try
@@ -35,16 +47,23 @@
                 $migrate->latest();
 
                 /**
-                 * Vamos atualizar as seeds.
-                 */
-                $seeder = \Config\Database::seeder();
-                $seeder->call('CategorieSeeder');
-
-                /**
                  * Atualizar o status de migrations e seeds no .env
                  */
                 $this->setEnvValue("installer.database.migration", "1");
-                $this->setEnvValue("installer.database.seeds", "1");
+
+                if (env('installer.database.seeds') == "0")
+                {
+                    /**
+                     * Vamos atualizar as seeds.
+                     */
+                    $seeder = \Config\Database::seeder();
+                    $seeder->call('CategorieSeeder');
+
+                    /**
+                     * Atualizar o status seeds no .env
+                     */
+                    $this->setEnvValue("installer.database.seeds", "1");
+                }
 
                 /**
                  * Redirecionar para home.

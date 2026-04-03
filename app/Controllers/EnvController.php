@@ -59,7 +59,7 @@
          */
         public function setEnvValue($key, $value)
         {
-            $path = ROOTPATH . '.env';
+            $path = dirname(__DIR__) . DIRECTORY_SEPARATOR . ".env";
 
             if (!file_exists($path))
             {
@@ -69,6 +69,14 @@
             $value = trim($value);
 
             $env = file_get_contents($path);
+
+            /**
+             * Filtros.
+             */
+            $env = str_replace("\t", " ", $env);
+            $env = str_replace("  ", " ", $env);
+            $env = str_replace(" =", "=", $env);
+            $env = str_replace("= ", "=", $env);
 
             /**
              * Verifica se já existe.
@@ -94,7 +102,16 @@
             /**
              * Salva de volta
              */
-            file_put_contents($path, $env);
+            // file_put_contents($path, $env);
+
+            $f = fopen($path, 'w');
+            if ($f === false)
+            {
+                die('Erro ao abrir o arquivo');
+            }
+
+            fwrite($f, $env);
+            fclose($f);
 
             return true;
         }

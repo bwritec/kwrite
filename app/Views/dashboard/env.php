@@ -376,7 +376,7 @@
                                     Melhor Envio
                                 </label>
 
-                                <textarea name="token_melhorenvio" id="token_melhorenvio" class="form-control"></textarea>
+                                <textarea name="token_melhorenvio" id="token_melhorenvio" class="form-control" style="height: 200px;"><?= esc(env("melhorenvio.token") ?? '') ?></textarea>
 
                                 <?php if (isset($errors['token_melhorenvio'])): ?>
                                     <div class="invalid-feedback">

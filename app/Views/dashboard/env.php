@@ -262,7 +262,7 @@
                                     Do Email
                                 </label>
 
-                                <input type="text" name="email_from_email" id="email_from_email" class="form-control" placeholder="nao-responder@kwrite.com.br">
+                                <input type="text" name="email_from_email" id="email_from_email" class="form-control" placeholder="nao-responder@kwrite.com.br" value="<?= esc(env("email.fromEmail") ?? '') ?>">
 
                                 <?php if (isset($errors['email_from_email'])): ?>
                                     <div class="invalid-feedback">
@@ -276,7 +276,7 @@
                                     Do Nome
                                 </label>
 
-                                <input type="text" name="email_from_name" id="email_from_name" class="form-control" placeholder="Kwrite">
+                                <input type="text" name="email_from_name" id="email_from_name" class="form-control" placeholder="Kwrite" value="<?= esc(env("email.fromName") ?? '') ?>">
 
                                 <?php if (isset($errors['email_from_name'])): ?>
                                     <div class="invalid-feedback">
@@ -304,7 +304,7 @@
                                     Host
                                 </label>
 
-                                <input type="text" name="email_host" id="email_host" class="form-control">
+                                <input type="text" name="email_host" id="email_host" class="form-control" value="<?= esc(env("email.SMTPHost") ?? '') ?>">
 
                                 <?php if (isset($errors['email_host'])): ?>
                                     <div class="invalid-feedback">
@@ -318,7 +318,7 @@
                                     Usuário
                                 </label>
 
-                                <input type="text" name="email_user" id="email_user" class="form-control">
+                                <input type="text" name="email_user" id="email_user" class="form-control" value="<?= esc(env("email.SMTPUser") ?? '') ?>">
 
                                 <?php if (isset($errors['email_user'])): ?>
                                     <div class="invalid-feedback">
@@ -332,7 +332,7 @@
                                     Senha
                                 </label>
 
-                                <input type="text" name="email_password" id="email_password" class="form-control">
+                                <input type="text" name="email_password" id="email_password" class="form-control" value="<?= esc(env("email.SMTPPass") ?? '') ?>">
 
                                 <?php if (isset($errors['email_password'])): ?>
                                     <div class="invalid-feedback">
@@ -346,7 +346,7 @@
                                     Porta
                                 </label>
 
-                                <input type="text" name="email_port" id="email_port" class="form-control">
+                                <input type="text" name="email_port" id="email_port" class="form-control" value="<?= esc(env("email.SMTPPort") ?? '') ?>">
 
                                 <?php if (isset($errors['email_port'])): ?>
                                     <div class="invalid-feedback">
@@ -360,7 +360,7 @@
                                     Criptografia
                                 </label>
 
-                                <input type="text" name="email_crypto" id="email_crypto" class="form-control" value="tls">
+                                <input type="text" name="email_crypto" id="email_crypto" class="form-control" value="<?= esc(env("email.SMTPCrypto") ?? '') ?>">
 
                                 <?php if (isset($errors['email_crypto'])): ?>
                                     <div class="invalid-feedback">

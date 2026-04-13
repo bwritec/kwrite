@@ -25,7 +25,7 @@ class RegisterController extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            return view('register', [
+            return view('system/register', [
                 'title' => 'Cadastro de Usuário',
                 'errors' => $validation->getErrors(),
             ]);

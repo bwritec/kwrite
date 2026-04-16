@@ -10,7 +10,7 @@ class PasswordController extends BaseController
 {
     public function forgot()
     {
-        return view('auth/forgot', ['title' => 'Recuperar senha']);
+        return view('system/auth/forgot', ['title' => 'Recuperar senha']);
     }
 
     public function sendResetLink()
@@ -25,7 +25,7 @@ class PasswordController extends BaseController
 
         if (!$user)
         {
-            return view('auth/forgot', [
+            return view('system/auth/forgot', [
                 'title' => 'Recuperar senha',
                 'error' => 'E-mail não encontrado.'
             ]);
@@ -48,7 +48,7 @@ class PasswordController extends BaseController
         ");
         $emailService->send();
 
-        return view('auth/forgot', [
+        return view('system/auth/forgot', [
             'title' => 'Recuperar senha',
             'success' => 'Enviamos um link para seu e-mail.'
         ]);
@@ -64,7 +64,7 @@ class PasswordController extends BaseController
             return redirect()->to('/forgot')->with('error', 'Token inválido ou expirado.');
         }
 
-        return view('auth/reset', [
+        return view('system/auth/reset', [
             'title' => 'Redefinir senha',
             'token' => $token
         ]);
@@ -88,7 +88,7 @@ class PasswordController extends BaseController
 
         if (strlen($password) < 6)
         {
-            return view('auth/reset', [
+            return view('system/auth/reset', [
                 'title' => 'Redefinir senha',
                 'token' => $token,
                 'error' => 'A senha deve ter pelo menos 6 caracteres.'

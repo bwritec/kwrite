@@ -15,7 +15,7 @@ class DashboardController extends BaseController
             return redirect()->to('/login');
         }
 
-        return view('dashboard/index', [
+        return view('system/dashboard/index', [
             'title' => 'Dashboard',
             'user'  => $user
         ]);

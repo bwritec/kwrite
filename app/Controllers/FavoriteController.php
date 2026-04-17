@@ -153,8 +153,9 @@
                 }
             }
 
-            return view('dashboard/favorites', [
+            return view('system/dashboard/favorites', [
                 'title' => 'Favoritos',
+                'page' => 'dashboard.favorites',
                 'favorites' => $products
             ]);
         }

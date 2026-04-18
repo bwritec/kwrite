@@ -168,6 +168,50 @@
                             </li>
                         <?php endif; ?>
 
+                        <?php if ($page == "dashboard.purchases"): ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>index.php/dashboard/purchases" class="nav-link active">
+                                    <i class="nav-icon fas fa-shopping-basket"></i>
+
+                                    <p>
+                                        Compras
+                                    </p>
+                                </a>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>index.php/dashboard/purchases" class="nav-link">
+                                    <i class="nav-icon fas fa-shopping-basket"></i>
+
+                                    <p>
+                                        Compras
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
+                        <?php if ($page == "dashboard.sales"): ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>index.php/dashboard/sales" class="nav-link active">
+                                    <i class="nav-icon fas fa-shipping-fast"></i>
+
+                                    <p>
+                                        Vendas
+                                    </p>
+                                </a>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>index.php/dashboard/sales" class="nav-link">
+                                    <i class="nav-icon fas fa-shipping-fast"></i>
+
+                                    <p>
+                                        Vendas
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
                         <li class="nav-header">
                             ADMIN
                         </li>

@@ -212,6 +212,28 @@
                             </li>
                         <?php endif; ?>
 
+                        <?php if ($page == "dashboard.address"): ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>index.php/dashboard/address" class="nav-link active">
+                                    <i class="nav-icon fas fa-map-marker-alt"></i>
+
+                                    <p>
+                                        Endereço
+                                    </p>
+                                </a>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>index.php/dashboard/address" class="nav-link">
+                                    <i class="nav-icon fas fa-map-marker-alt"></i>
+
+                                    <p>
+                                        Endereço
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
                         <li class="nav-header">
                             ADMIN
                         </li>

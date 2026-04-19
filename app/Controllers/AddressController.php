@@ -26,9 +26,10 @@
             $addressModel = new AddressModel();
             $address = $addressModel->getByUserId($user['id']);
 
-            return view('dashboard/address', [
-                'title'   => 'Meu Endereço',
-                'user'    => $user,
+            return view('system/dashboard/address', [
+                'title' => 'Meu Endereço',
+                'user' => $user,
+                'page' => 'dashboard.address',
                 'address' => $address ?? []
             ]);
         }
@@ -82,9 +83,10 @@
             ]);
 
             if (!$validation->withRequest($this->request)->run()) {
-                return view('dashboard/address', [
+                return view('system/dashboard/address', [
                     'title' => 'Meu Endereço',
                     'user' => $user,
+                    'page' => 'dashboard.address',
                     'errors' => $validation->getErrors(),
                     'address' => $this->request->getPost()
                 ]);

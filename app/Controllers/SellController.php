@@ -18,12 +18,21 @@ class SellController extends BaseController
 {
     public function index()
     {
+        $user = session()->get('user');
+
+        if (!$user)
+        {
+            return redirect()->to('/login');
+        }
+
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->orderBy('name', 'ASC')->findAll();
 
-        return view('dashboard/sell', [
+        return view('system/dashboard/sell', [
             'title' => 'Vender Produto',
             'categories' => $categories,
+            'user' => $user,
+            'page' => 'dashboard.sell',
             'errors' => session()->getFlashdata('errors'),
             'success' => session()->getFlashdata('success'),
         ]);
@@ -31,6 +40,13 @@ class SellController extends BaseController
 
     public function store()
     {
+        $user = session()->get('user');
+
+        if (!$user)
+        {
+            return redirect()->to('/login');
+        }
+
         helper(['form', 'filesystem']);
 
         $validation = \Config\Services::validation();

@@ -288,6 +288,28 @@
                             </li>
                         <?php endif; ?>
 
+                        <?php if ($page == "dashboard.sell"): ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>index.php/dashboard/sell" class="nav-link active">
+                                    <i class="nav-icon fas fa-mouse-pointer"></i>
+
+                                    <p>
+                                        Vender
+                                    </p>
+                                </a>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>index.php/dashboard/sell" class="nav-link">
+                                    <i class="nav-icon fas fa-mouse-pointer"></i>
+
+                                    <p>
+                                        Vender
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
                         <li class="nav-header">
                             ADMIN
                         </li>

@@ -26,7 +26,9 @@
                 "title" => "Instalação do banco de dados"
             );
 
-            return view("install/admin", $data);
+            $admin_theme = env('app.theme.system');
+
+            return view("system/" + $admin_theme + "/install/admin", $data);
         }
 
         /**
@@ -89,7 +91,9 @@
                 "title" => "Instalação do banco de dados"
             );
 
-            return view("install/migrate", $data);
+            $admin_theme = env('app.theme.system');
+
+            return view("system/" + $admin_theme + "/install/migrate", $data);
         }
 
         /**

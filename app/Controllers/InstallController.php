@@ -28,7 +28,7 @@
 
             $admin_theme = env('app.theme.system');
 
-            return view("system/" + $admin_theme + "/install/admin", $data);
+            return view("system/" . $admin_theme . "/install/admin", $data);
         }
 
         /**
@@ -51,8 +51,11 @@
                 'password' => 'required|min_length[6]',
             ]);
 
-            if (!$validation->withRequest($this->request)->run()) {
-                return view('install/admin', [
+            if (!$validation->withRequest($this->request)->run())
+            {
+                $admin_theme = env('app.theme.system');
+
+                return view('system/' . $admin_theme . '/install/admin', [
                     'title' => 'Cadastro de Usuário',
                     'errors' => $validation->getErrors(),
                 ]);
@@ -93,7 +96,7 @@
 
             $admin_theme = env('app.theme.system');
 
-            return view("system/" + $admin_theme + "/install/migrate", $data);
+            return view("system/" . $admin_theme . "/install/migrate", $data);
         }
 
         /**

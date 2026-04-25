@@ -9,7 +9,11 @@ class RegisterController extends BaseController
 {
     public function index()
     {
-        return view('system/register', ['title' => 'Cadastro de Usuário']);
+        $admin_theme = env('app.theme.system');
+
+        return view('system/'. $admin_theme .'/register', [
+            'title' => 'Cadastro de Usuário'
+        ]);
     }
 
     public function store()
@@ -24,8 +28,11 @@ class RegisterController extends BaseController
             'password' => 'required|min_length[6]',
         ]);
 
-        if (!$validation->withRequest($this->request)->run()) {
-            return view('system/register', [
+        if (!$validation->withRequest($this->request)->run())
+        {
+            $admin_theme = env('app.theme.system');
+
+            return view('system/'. $admin_theme .'/register', [
                 'title' => 'Cadastro de Usuário',
                 'errors' => $validation->getErrors(),
             ]);
@@ -38,6 +45,8 @@ class RegisterController extends BaseController
             'password' => $this->request->getPost('password'),
         ]);
 
-        return redirect()->to('/register')->with('success', 'Usuário cadastrado com sucesso!');
+        return redirect()
+            ->to('/register')
+            ->with('success', 'Usuário cadastrado com sucesso!');
     }
 }

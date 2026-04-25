@@ -1,4 +1,4 @@
-<?= $this->extend('system/layouts/auth') ?>
+<?= $this->extend('system/adminlte-3.2.0/layouts/auth') ?>
 
 <?= $this->section('content') ?>
 <div class="register-box">

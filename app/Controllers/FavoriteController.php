@@ -36,7 +36,7 @@
                 return redirect()->to('/login');
             }
 
-            $userId    = $this->request->getPost('user_id');
+            $userId = $this->request->getPost('user_id');
             $productId = $this->request->getPost('product_id');
 
             // Evitar duplicado
@@ -45,7 +45,8 @@
                 ->where('product_id', $productId)
                 ->first();
 
-            if ($exists) {
+            if ($exists)
+            {
                 return $this->respond([
                     'message' => 'Produto já está favoritado.'
                 ]);
@@ -71,7 +72,7 @@
                 return redirect()->to('/login');
             }
 
-            $userId    = $this->request->getPost('user_id');
+            $userId = $this->request->getPost('user_id');
             $productId = $this->request->getPost('product_id');
 
             $favorite = $this->favoriteModel
@@ -107,7 +108,7 @@
             $userId = $user["id"];
 
             $favoritesModel = new \App\Models\FavoriteModel();
-            $productsModel  = new \App\Models\ProductModel();
+            $productsModel = new \App\Models\ProductModel();
             $thumbnailModel = new \App\Models\ProductThumbnailModel();
 
             /**
@@ -153,7 +154,9 @@
                 }
             }
 
-            return view('system/dashboard/favorites', [
+            $admin_theme = env('app.theme.system');
+
+            return view('system/'. $admin_theme .'/dashboard/favorites', [
                 'title' => 'Favoritos',
                 'page' => 'dashboard.favorites',
                 'user' => $user,

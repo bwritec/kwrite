@@ -28,7 +28,9 @@ class SellController extends BaseController
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->orderBy('name', 'ASC')->findAll();
 
-        return view('system/dashboard/sell', [
+        $admin_theme = env('app.theme.system');
+
+        return view('system/'. $admin_theme .'/dashboard/sell', [
             'title' => 'Vender Produto',
             'categories' => $categories,
             'user' => $user,
@@ -132,8 +134,10 @@ class SellController extends BaseController
                  * valida extensão (use lowercase)
                  */
                 $ext = strtolower($photo->getClientExtension());
-                if (! in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
-                    return redirect()->back()
+                if (! in_array($ext, ['jpg', 'jpeg', 'png', 'webp']))
+                {
+                    return redirect()
+                        ->back()
                         ->with('errors', ['photos' => 'Apenas JPG, JPEG, WEBP ou PNG são permitidos nas fotos.'])
                         ->withInput();
                 }
@@ -266,6 +270,8 @@ class SellController extends BaseController
             'width' => $this->request->getPost('largura'),
         ]);
 
-        return redirect()->to('/dashboard/sell')->with('success', 'Produto cadastrado com sucesso!');
+        return redirect()
+            ->to('/dashboard/sell')
+            ->with('success', 'Produto cadastrado com sucesso!');
     }
 }

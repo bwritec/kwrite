@@ -37,7 +37,9 @@ class ProductsController extends BaseController
             $product['thumbnail'] = $thumb ? base_url($thumb['name']) : base_url('dist/photos/no-image.png');
         }
 
-        return view('system/dashboard/products', [
+        $admin_theme = env('app.theme.system');
+
+        return view('system/'. $admin_theme .'/dashboard/products', [
             'title' => 'Meus Produtos',
             'products' => $products,
             'user' => $user,
@@ -66,7 +68,8 @@ class ProductsController extends BaseController
          * Verifica se o produto pertence ao usuário logado
          */
         $product = $productModel->find($id);
-        if (!$product || $product['user_id'] != $userId) {
+        if (!$product || $product['user_id'] != $userId)
+        {
             return redirect()->back()->with('error', 'Produto não encontrado ou acesso negado.');
         }
 
@@ -74,20 +77,25 @@ class ProductsController extends BaseController
          * Exclui miniatura.
          */
         $thumb = $thumbModel->where('product_id', $id)->first();
-        if ($thumb && !empty($thumb['name']) && file_exists(FCPATH . $thumb['name'])) {
+        if ($thumb && !empty($thumb['name']) && file_exists(FCPATH . $thumb['name']))
+        {
             unlink(FCPATH . $thumb['name']);
         }
+
         $thumbModel->where('product_id', $id)->delete();
 
         /**
          * Exclui fotos
          */
         $photos = $photoModel->where('product_id', $id)->findAll();
-        foreach ($photos as $photo) {
-            if (!empty($photo['name']) && file_exists(FCPATH . $photo['name'])) {
+        foreach ($photos as $photo)
+        {
+            if (!empty($photo['name']) && file_exists(FCPATH . $photo['name']))
+            {
                 unlink(FCPATH . $photo['name']);
             }
         }
+
         $photoModel->where('product_id', $id)->delete();
 
         /**
@@ -120,6 +128,8 @@ class ProductsController extends BaseController
             return redirect()->back()->with('error', 'Erro ao excluir produto. Tente novamente.');
         }
 
-        return redirect()->to('/dashboard/products')->with('success', 'Produto e todos os dados relacionados foram excluídos com sucesso!');
+        return redirect()
+            ->to('/dashboard/products')
+            ->with('success', 'Produto e todos os dados relacionados foram excluídos com sucesso!');
     }
 }

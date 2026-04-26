@@ -26,7 +26,9 @@
             $addressModel = new AddressModel();
             $address = $addressModel->getByUserId($user['id']);
 
-            return view('system/dashboard/address', [
+            $admin_theme = env('app.theme.system');
+
+            return view('system/'. $admin_theme .'/dashboard/address', [
                 'title' => 'Meu Endereço',
                 'user' => $user,
                 'page' => 'dashboard.address',
@@ -74,7 +76,7 @@
                 'city' => ['required' => 'Informe a cidade.'],
                 'state' => [
                     'required' => 'Informe o estado (UF).',
-                    'max_length' => 'Use apenas a sigla do estado (ex: RS).'
+                    'max_length' => 'Use apenas a sigla do estado (ex: SP).'
                 ],
                 'cep' => [
                     'required' => 'Informe o CEP.',
@@ -82,8 +84,11 @@
                 ]
             ]);
 
-            if (!$validation->withRequest($this->request)->run()) {
-                return view('system/dashboard/address', [
+            if (!$validation->withRequest($this->request)->run())
+            {
+                $admin_theme = env('app.theme.system');
+
+                return view('system/'. $admin_theme .'/dashboard/address', [
                     'title' => 'Meu Endereço',
                     'user' => $user,
                     'page' => 'dashboard.address',
@@ -104,6 +109,8 @@
                 'cep' => $cleanCep,
             ]);
 
-            return redirect()->to('/dashboard/address')->with('success', 'Endereço salvo com sucesso!');
+            return redirect()
+                ->to('/dashboard/address')
+                ->with('success', 'Endereço salvo com sucesso!');
         }
     }

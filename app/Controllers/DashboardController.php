@@ -15,7 +15,9 @@ class DashboardController extends BaseController
             return redirect()->to('/login');
         }
 
-        return view('system/dashboard/index', [
+        $admin_theme = env('app.theme.system');
+
+        return view('system/'. $admin_theme .'/dashboard/index', [
             'title' => 'Dashboard',
             'page' => 'dashboard.index',
             'user'  => $user

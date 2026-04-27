@@ -1,15 +1,16 @@
 <?php
 
 /**
- * The goal of this file is to allow developers a location
- * where they can overwrite core procedural functions and
- * replace them with their own. This file is loaded during
- * the bootstrap process and is called during the framework's
- * execution.
+ * O objetivo deste arquivo é fornecer aos desenvolvedores
+ * um local onde possam sobrescrever funções procedurais
+ * essenciais e substituí-las por funções próprias. Este
+ * arquivo é carregado durante o processo de inicialização e
+ * é executado durante a execução do framework.
  *
- * This can be looked at as a `master helper` file that is
- * loaded early on, and may also contain additional functions
- * that you'd like to use throughout your entire application
+ * Isso pode ser visto como um arquivo auxiliar principal
+ * que é carregado no início do processo e também pode conter
+ * funções adicionais que você gostaria de usar em toda a sua
+ * aplicação.
  *
  * @see: https://codeigniter.com/user_guide/extending/common.html
  */

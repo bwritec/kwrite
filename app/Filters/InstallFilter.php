@@ -7,6 +7,9 @@
     use CodeIgniter\Filters\FilterInterface;
 
 
+    /**
+     *
+     */
     class InstallFilter implements FilterInterface
     {
         public function before(RequestInterface $request, $arguments = null)
@@ -36,6 +39,8 @@
 
         public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
         {
-            // Opcional (executa depois do controller)
+            /**
+             * Opcional (executa depois do controller)
+             */
         }
     }

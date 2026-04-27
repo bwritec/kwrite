@@ -64,6 +64,7 @@
                 'categories' => $categories,
                 'pager' => $pager,
                 'user' => $user,
+                'admin_theme' => $admin_theme,
                 'page' => 'dashboard.categories'
             ];
 
@@ -100,6 +101,7 @@
                 'title' => 'Nova Categoria',
                 'parents' => $parents,
                 'user' => $user,
+                'admin_theme' => $admin_theme,
                 'page' => 'dashboard.categories'
             ];
 
@@ -185,6 +187,7 @@
                 'category' => $category,
                 'parents' => $parents,
                 'user' => $user,
+                'admin_theme' => $admin_theme,
                 'page' => 'dashboard.categories'
             ];
 

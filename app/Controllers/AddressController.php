@@ -31,6 +31,7 @@
             return view('system/'. $admin_theme .'/dashboard/address', [
                 'title' => 'Meu Endereço',
                 'user' => $user,
+                'admin_theme' => $admin_theme,
                 'page' => 'dashboard.address',
                 'address' => $address ?? []
             ]);
@@ -91,6 +92,7 @@
                 return view('system/'. $admin_theme .'/dashboard/address', [
                     'title' => 'Meu Endereço',
                     'user' => $user,
+                    'admin_theme' => $admin_theme,
                     'page' => 'dashboard.address',
                     'errors' => $validation->getErrors(),
                     'address' => $this->request->getPost()

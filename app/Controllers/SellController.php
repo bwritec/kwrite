@@ -34,6 +34,7 @@ class SellController extends BaseController
             'title' => 'Vender Produto',
             'categories' => $categories,
             'user' => $user,
+            'admin_theme' => $admin_theme,
             'page' => 'dashboard.sell',
             'errors' => session()->getFlashdata('errors'),
             'success' => session()->getFlashdata('success'),

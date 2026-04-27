@@ -24,6 +24,7 @@ class PhoneController extends BaseController
         return view('system/'. $admin_theme .'/dashboard/contact', [
             'title' => 'Atualizar Telefone',
             'user'  => $user,
+            'admin_theme' => $admin_theme,
             'page' => 'dashboard.contact',
             'phone' => $phone ? $phone['phone'] : ''
         ]);
@@ -74,6 +75,7 @@ class PhoneController extends BaseController
             return view('system/'. $admin_theme .'/dashboard/contact', [
                 'title' => 'Atualizar Telefone',
                 'user'  => $user,
+                'admin_theme' => $admin_theme,
                 'page' => 'dashboard.contact',
                 'errors' => $validation->getErrors(),
                 'phone'  => $this->request->getPost('phone')

@@ -20,6 +20,7 @@ class DashboardController extends BaseController
         return view('system/'. $admin_theme .'/dashboard/index', [
             'title' => 'Dashboard',
             'page' => 'dashboard.index',
+            'admin_theme' => $admin_theme,
             'user'  => $user
         ]);
     }

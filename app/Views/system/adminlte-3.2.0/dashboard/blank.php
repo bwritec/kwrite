@@ -1,4 +1,4 @@
-<?= $this->extend('system/layouts/dashboard') ?>
+<?= $this->extend('system/'. $admin_theme .'/layouts/dashboard') ?>
 
 <?= $this->section('content') ?>
 <div class="content-wrapper">

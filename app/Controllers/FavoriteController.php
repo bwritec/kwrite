@@ -160,6 +160,7 @@
                 'title' => 'Favoritos',
                 'page' => 'dashboard.favorites',
                 'user' => $user,
+                'admin_theme' => $admin_theme,
                 'favorites' => $products
             ]);
         }

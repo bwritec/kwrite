@@ -43,6 +43,7 @@ class ProductsController extends BaseController
             'title' => 'Meus Produtos',
             'products' => $products,
             'user' => $user,
+            'admin_theme' => $admin_theme,
             'page' => 'dashboard.products',
             'success' => session()->getFlashdata('success'),
             'error' => session()->getFlashdata('error')
